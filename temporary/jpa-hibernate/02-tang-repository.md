@@ -16,7 +16,32 @@ method thay vì viết SQL.
 
 ## Cơ chế: cây kế thừa (Spring Data JPA 4.1.1, kiểm chứng bằng javap)
 
-![Class Diagram: tầng Repository](class-tang-repository.png)
+```mermaid
+classDiagram
+    class Repository
+    class CrudRepository
+    class ListCrudRepository
+    class PagingAndSortingRepository
+    class ListPagingAndSortingRepository
+    class QueryByExampleExecutor
+    class JpaRepository
+    class JpaSpecificationExecutor
+    class JpaRepositoryImplementation
+    class SimpleJpaRepository
+    class OrderRepository
+    Repository <|-- CrudRepository
+    CrudRepository <|-- ListCrudRepository
+    PagingAndSortingRepository <|-- ListPagingAndSortingRepository
+    ListCrudRepository <|-- JpaRepository
+    ListPagingAndSortingRepository <|-- JpaRepository
+    QueryByExampleExecutor <|-- JpaRepository
+    JpaRepository <|-- OrderRepository
+    JpaSpecificationExecutor <|-- OrderRepository
+    JpaRepository <|-- JpaRepositoryImplementation
+    JpaSpecificationExecutor <|-- JpaRepositoryImplementation
+    JpaRepositoryImplementation <|.. SimpleJpaRepository
+    style OrderRepository stroke:#f5c518,stroke-width:3px
+```
 
 OrderRepository của bạn extends 2 interface: JpaRepository<Order, Long> và
 JpaSpecificationExecutor<Order>. JpaRepository 4.1.1 KHÔNG kèm Specification — vì vậy muốn

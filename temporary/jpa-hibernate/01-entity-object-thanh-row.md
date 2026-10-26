@@ -16,7 +16,30 @@ dễ sai. Hibernate là lớp dịch đó.
 
 ## Cơ chế: lệnh đi qua 6 tầng (chiều lưu)
 
-![Sequence Diagram: lưu Order xuống database](sequence-luu-order.png)
+```mermaid
+sequenceDiagram
+    participant Service
+    participant Repository
+    participant SimpleJpaRepository
+    participant EntityManager
+    participant Hibernate
+    participant JDBC Driver
+    participant PostgreSQL
+    Service->>Repository: save(order)
+    Repository->>SimpleJpaRepository: save(order)
+    SimpleJpaRepository->>EntityManager: persist(order)
+    EntityManager->>Hibernate: persist(order)
+    Note over Hibernate: @PrePersist chạy ở đây: sau persist, trước INSERT
+    Hibernate->>JDBC Driver: INSERT INTO Orders ...
+    JDBC Driver->>PostgreSQL: gửi SQL qua TCP
+    PostgreSQL-->>JDBC Driver: trả id = 1
+    JDBC Driver-->>Hibernate: id = 1
+    Hibernate-->>EntityManager: gán id vào object
+    EntityManager-->>SimpleJpaRepository: trả order (id = 1)
+    SimpleJpaRepository-->>Repository: trả order
+    Repository-->>Service: trả order
+    Note over Service,PostgreSQL: items INSERT tương tự kèm order_id = 1, COMMIT làm các row thành bền
+```
 
 ### @PrePersist chạy ở đâu
 

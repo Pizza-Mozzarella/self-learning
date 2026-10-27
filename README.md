@@ -16,7 +16,7 @@ Tiêu chí `published`: biên dịch sạch (không lỗi, không cảnh báo l�
 
 ## Cách thêm một note
 
-1. Viết note hub vào `concepts/<chủ đề>/NN-ten-note.md` với frontmatter `status: draft`, kèm folder `NN-ten-note/` chứa 3 file structure.md/flow.md/classes.md.
+1. Viết note hub đúng tầng của nó với frontmatter `status: draft`, kèm folder `NN-ten-note/` chứa 3 file structure.md/flow.md/classes.md: note tổng quan ở `concepts/<chủ đề>/NN-ten-note.md`, note đào sâu từng tầng ở `concepts/<chủ đề>/layers/NN-ten-note.md`, note của nhánh mới ở folder nhánh riêng.
 2. Kiểm chứng bằng code chạy (project study hoặc ví dụ tối thiểu).
 3. Khi đã kiểm chứng và đã chốt nội dung thì sửa frontmatter thành `status: published` (không chuyển thư mục), cập nhật `OUTLINE.md` và README chủ đề.
 4. Commit + push (mỗi note một commit riêng để lịch sử rõ ràng).

@@ -13,11 +13,9 @@ Loại sơ đồ cho chủ đề này: Class Diagram (cây kế thừa) + sơ đ
 
 ## Tóm gọn của user
 
-Bản vẽ dưới đây là bản gốc user tự vẽ (bản cuối — thay bản Factory/Proxy/Bean trước đó).
+Bản vẽ gốc user tự vẽ (bản cuối — thay bản Factory/Proxy/Bean trước đó) đặt ở mục Cấu trúc bên dưới.
 Phần lời đã sắp lại theo logic đúng (đích inject là Service, target nằm trong proxy,
 factory tạo cả 3 thứ).
-
-![Bản vẽ tay của user: cấu trúc tổng Spring Data, từ Application.Run tới Database](cau-truc-spring-data-tay.png)
 
 Quy trình user tổng kết:
 
@@ -93,6 +91,10 @@ Simple thì bạn không bao giờ xin hay nhận. Chỗ duy nhất có inject �
 Bean được Spring cầm đi inject CHÍNH LÀ proxy — SimpleJpaRepository instance nằm bên
 trong proxy (làm target), đi kèm với proxy chứ không phải bean riêng. Spring chỉ biết
 tới proxy, không biết tới Simple.
+
+Sơ đồ cấu trúc tổng (bản vẽ tay của user):
+
+![Bản vẽ tay của user: cấu trúc tổng Spring Data, từ Application.Run tới Database](cau-truc-spring-data-tay.png)
 
 ## Flow
 

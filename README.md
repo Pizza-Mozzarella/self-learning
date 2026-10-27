@@ -23,10 +23,10 @@ Tiêu chí `published`: biên dịch sạch (không lỗi, không cảnh báo l�
 ## Mẫu note (một khái niệm = một file ngắn)
 
 0. **Frontmatter** — title, summary một dòng, domain, status, created, updated.
-1. **Tóm gọn của user** (nếu có) — câu chốt nguyên văn của user + bản vẽ tay của user, đặt ngay sau tiêu đề, tách riêng khỏi phần giải thích của agent.
+1. **Tóm gọn của user** (nếu có) — câu chốt nguyên văn của user + lời user, đặt ngay sau tiêu đề, tách riêng khỏi phần giải thích của agent. Bản vẽ tay của user thuộc về mục Cấu trúc, không đặt ở đây.
 2. **Câu chốt** — một dòng, nguyên văn, dùng để nhắc lại sau này.
 3. **Vì sao tồn tại** — vấn đề nó sinh ra để giải quyết.
-4. **Cơ chế** — ai gọi ai, chạy lúc nào, đọc dữ liệu gì để quyết định. Tách riêng **Cấu trúc** (gồm những gì, quan hệ gì) và **Flow** (chạy ra sao theo thời gian, ai gọi ai) — hai lát cắt phải khớp nhau.
+4. **Cơ chế** — ai gọi ai, chạy lúc nào, đọc dữ liệu gì để quyết định. Chia thành 3 phần: **Cấu trúc** (gồm những gì, quan hệ gì — sơ đồ cấu trúc và bản vẽ tay của user đặt ở đây), **Flow** (chạy ra sao theo thời gian, ai gọi ai), **Class phụ thuộc** (các class/interface chính và quan hệ phụ thuộc: extends/implements/chứa/tạo/dùng — liệt kê, không vẽ lại Class Diagram đã có ở Cấu trúc). Ba phần phải khớp nhau.
 5. **Ví dụ từ project** — link tới commit/code thật trong repo study.
 6. **Bẫy thường gặp** — lỗi đã mắc hoặc dễ mắc.
 

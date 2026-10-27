@@ -2,6 +2,7 @@
 
 20 thay đổi gần nhất có ý nghĩa, mới nhất trước.
 
+- 2026-10-28: Note tầng dời xuống layers/ — note 01 tổng quan ở gốc chủ đề, note 02/03 đào sâu từng tầng gom dưới layers/ (sửa lỗi xếp phẳng).
 - 2026-10-28: Note 01 và 03 tách khung hub + folder, 3 file phần để trống, điền nội dung sau.
 - 2026-10-28: Note 02 tách thành hub + folder 02-tang-repository/ (structure/flow/classes) theo phương án A.
 - 2026-10-28: Refactor cấu trúc repo — gộp hai vùng release/ + temporary/ thành cây concepts/ duy nhất, trạng thái note chuyển sang frontmatter draft/published; note 02 đưa mục Tóm gọn của user lên đầu note.

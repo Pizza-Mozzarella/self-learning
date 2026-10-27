@@ -50,6 +50,6 @@ tới proxy, không biết tới Simple.
 
 Sơ đồ cấu trúc tổng (bản vẽ tay của user):
 
-![Bản vẽ tay của user: cấu trúc tổng Spring Data, từ Application.Run tới Database](../cau-truc-spring-data-tay.png)
+![Bản vẽ tay của user: cấu trúc tổng Spring Data, từ Application.Run tới Database](../../cau-truc-spring-data-tay.png)
 
 [← Về note hub](../02-tang-repository.md)

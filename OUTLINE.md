@@ -28,9 +28,10 @@ Trạng thái note nằm ở frontmatter của từng file: `status: draft` (ch�
 
 ### JPA & Hibernate
 
-1. [Entity object thành row trên bảng (theo tầng)](concepts/jpa-hibernate/01-entity-object-thanh-row.md) — draft.
-2. [Tầng Repository (Spring Data JPA)](concepts/jpa-hibernate/02-tang-repository.md) — draft.
-3. [Tầng EntityManager (JPA)](concepts/jpa-hibernate/03-tang-entitymanager.md) — draft, đang viết dở.
+1. [Entity object thành row trên bảng (theo tầng)](concepts/jpa-hibernate/01-entity-object-thanh-row.md) — draft, tổng quan.
+   - Đào sâu từng tầng:
+     - [Tầng Repository (Spring Data JPA)](concepts/jpa-hibernate/layers/02-tang-repository.md) — draft.
+     - [Tầng EntityManager (JPA)](concepts/jpa-hibernate/layers/03-tang-entitymanager.md) — draft, đang viết dở.
 
 ---
 

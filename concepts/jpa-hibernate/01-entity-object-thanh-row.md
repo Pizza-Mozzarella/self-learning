@@ -76,6 +76,13 @@ id=1 | user_id=uuid | status='PENDING' | total_price=250.0 | created_at=...
 
 Items không nằm trong row của Order — mỗi item thành 1 row riêng ở Order_Items, kèm order_id=1.
 
+## Đào sâu từng tầng
+
+Tổng quan trên đây đi qua cả 6 tầng. Mỗi tầng đào sâu riêng:
+
+- [Tầng Repository](layers/02-tang-repository.md)
+- [Tầng EntityManager](layers/03-tang-entitymanager.md)
+
 ## Bẫy
 
 - Chỉ kể các BƯỚC mà không kể các TẦNG (hoặc ngược lại) rồi gọi là "toàn bộ" là thiếu —

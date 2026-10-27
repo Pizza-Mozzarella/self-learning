@@ -8,5 +8,5 @@ Mục lục theo tên của mọi note trong repo. Thứ tự đọc theo tầng
 
 ## T
 
-- [Tầng EntityManager (JPA)](../concepts/jpa-hibernate/03-tang-entitymanager.md) — draft, đang viết dở.
-- [Tầng Repository (Spring Data JPA)](../concepts/jpa-hibernate/02-tang-repository.md) — draft.
+- [Tầng EntityManager (JPA)](../concepts/jpa-hibernate/layers/03-tang-entitymanager.md) — draft, đang viết dở.
+- [Tầng Repository (Spring Data JPA)](../concepts/jpa-hibernate/layers/02-tang-repository.md) — draft.

@@ -1,7 +1,7 @@
 # Tầng Repository (Spring Data JPA)
 
 Trạng thái: bản nháp — đang viết cùng user, chưa chốt.
-Loại sơ đồ cho chủ đề này: Class Diagram.
+Loại sơ đồ cho chủ đề này: Class Diagram (cây kế thừa) + sơ đồ cấu trúc tổng (bản vẽ tay của user).
 
 ## Câu chốt
 
@@ -14,7 +14,7 @@ Không có Repository thì mỗi chỗ cần dữ liệu phải tự viết SQL 
 lặp lại và dễ sai. Repository gom mọi truy vấn của một entity vào một chỗ, gọi bằng tên
 method thay vì viết SQL.
 
-## Cơ chế: cây kế thừa (Spring Data JPA 4.1.1, kiểm chứng bằng javap)
+## Cấu trúc: cây kế thừa (Spring Data JPA 4.1.1, kiểm chứng bằng javap)
 
 ```mermaid
 classDiagram
@@ -50,11 +50,6 @@ dùng Specification phải extends thêm JpaSpecificationExecutor (như OrderRep
 Bean Repository thực chất là proxy do Spring Data tạo, chuyển việc chuẩn cho
 SimpleJpaRepository — class này giữ EntityManager, nối tầng Repository xuống tầng tiếp theo.
 
-Proxy là cái ngã tư: mỗi method gọi tới sẽ rẽ một hướng khác nhau — method chuẩn rẽ sang
-SimpleJpaRepository, method query rẽ sang bộ chạy query (suy từ tên method + annotation),
-method custom rẽ sang class custom bạn tự viết (nếu có). Bản thân proxy không chứa code
-làm việc thật nào.
-
 SimpleJpaRepository chỉ được new, không phải inject: JpaRepositoryFactory gọi new
 SimpleJpaRepository(thông tin entity, entityManager) lúc app chạy. "Inject" chỉ dùng khi
 Spring đưa một bean vào chỗ bạn xin nó (như proxy OrderRepository inject vào service) —
@@ -64,6 +59,18 @@ Simple thì bạn không bao giờ xin hay nhận. Chỗ duy nhất có inject �
 Bean được Spring cầm đi inject CHÍNH LÀ proxy — SimpleJpaRepository instance nằm bên
 trong proxy (làm target), đi kèm với proxy chứ không phải bean riêng. Spring chỉ biết
 tới proxy, không biết tới Simple.
+
+## Flow
+
+Khởi động: Application.Run tạo ApplicationContext → JpaRepositoriesRegistrar quét package
+repository, ghi bean definition vào BeanDefinitionRegistry → context tạo
+JpaRepositoryFactoryBean → FactoryBean new JpaRepositoryFactory → Factory tạo proxy +
+Simple + query executor → context đăng ký proxy làm bean → inject vào Service.
+
+Proxy là cái ngã tư: mỗi method gọi tới sẽ rẽ một hướng khác nhau — method chuẩn rẽ sang
+SimpleJpaRepository, method query rẽ sang bộ chạy query (suy từ tên method + annotation),
+method custom rẽ sang class custom bạn tự viết (nếu có). Bản thân proxy không chứa code
+làm việc thật nào.
 
 ### Quy trình tổng (user tổng kết)
 
@@ -86,18 +93,26 @@ cho method query).
 
 ## Tóm gọn của user
 
-Bản vẽ dưới đây là bản gốc user tự vẽ. Phần lời đã sắp lại theo logic đúng (đích
-inject là Service, target nằm trong proxy, factory tạo cả 3 thứ).
+Bản vẽ dưới đây là bản gốc user tự vẽ (bản cuối — thay bản Factory/Proxy/Bean trước đó).
+Phần lời đã sắp lại theo logic đúng (đích inject là Service, target nằm trong proxy,
+factory tạo cả 3 thứ).
 
-![Bản vẽ tay của user: Factory tạo Proxy, container quản lý Bean, Proxy điều hướng tới target](ban-ve-tay-repository-user.png)
+![Bản vẽ tay của user: cấu trúc tổng Spring Data, từ Application.Run tới Database](cau-truc-spring-data-tay.png)
 
 Quy trình user tổng kết:
 
-1. Factory tạo proxy + new SimpleJpaRepository + tạo query executor cho mỗi method
-   tự khai báo.
+0. Khởi động: Application.Run tạo ApplicationContext → JpaRepositoriesRegistrar quét
+   package, ghi bean definition vào BeanDefinitionRegistry → context tạo
+   JpaRepositoryFactoryBean.
+1. FactoryBean new JpaRepositoryFactory; Factory tạo proxy + new SimpleJpaRepository +
+   tạo query executor cho mỗi method tự khai báo.
 2. Factory đưa proxy cho Spring container quản lý — giờ gọi là bean (proxy chính là
    bean; Simple và query executor nằm bên trong proxy, không phải bean riêng).
 3. Spring inject bean (proxy) vào Service là chỗ khai báo cần Repository — bean này
    chính là Repository, không phải inject vào Repository.
 4. Bean hoạt động bằng cách điều hướng: method chuẩn → SimpleJpaRepository, method
    query → query executor.
+
+Sơ đồ đi tiếp xuống tầng EntityManager (Proxy EntityManager → Transaction →
+EntityManager → Persistence Context → CONNECTION → Hikari → Database) — chi tiết ở
+note 03.

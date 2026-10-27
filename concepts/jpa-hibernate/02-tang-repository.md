@@ -9,11 +9,9 @@ updated: 2026-10-28
 
 # Tầng Repository (Spring Data JPA)
 
-Loại sơ đồ cho chủ đề này: Class Diagram (cây kế thừa) + sơ đồ cấu trúc tổng (bản vẽ tay của user).
-
 ## Tóm gọn của user
 
-Bản vẽ gốc user tự vẽ (bản cuối — thay bản Factory/Proxy/Bean trước đó) đặt ở mục Cấu trúc bên dưới.
+Bản vẽ gốc user tự vẽ (bản cuối — thay bản Factory/Proxy/Bean trước đó) đặt ở [phần Cấu trúc](02-tang-repository/structure.md).
 Phần lời đã sắp lại theo logic đúng (đích inject là Service, target nằm trong proxy,
 factory tạo cả 3 thứ).
 
@@ -46,74 +44,11 @@ Không có Repository thì mỗi chỗ cần dữ liệu phải tự viết SQL 
 lặp lại và dễ sai. Repository gom mọi truy vấn của một entity vào một chỗ, gọi bằng tên
 method thay vì viết SQL.
 
-## Cấu trúc: cây kế thừa (Spring Data JPA 4.1.1, kiểm chứng bằng javap)
+## Cơ chế
 
-```mermaid
-classDiagram
-    class Repository
-    class CrudRepository
-    class ListCrudRepository
-    class PagingAndSortingRepository
-    class ListPagingAndSortingRepository
-    class QueryByExampleExecutor
-    class JpaRepository
-    class JpaSpecificationExecutor
-    class JpaRepositoryImplementation
-    class SimpleJpaRepository
-    class OrderRepository
-    Repository <|-- CrudRepository
-    CrudRepository <|-- ListCrudRepository
-    PagingAndSortingRepository <|-- ListPagingAndSortingRepository
-    ListCrudRepository <|-- JpaRepository
-    ListPagingAndSortingRepository <|-- JpaRepository
-    QueryByExampleExecutor <|-- JpaRepository
-    JpaRepository <|-- OrderRepository
-    JpaSpecificationExecutor <|-- OrderRepository
-    JpaRepository <|-- JpaRepositoryImplementation
-    JpaSpecificationExecutor <|-- JpaRepositoryImplementation
-    JpaRepositoryImplementation <|.. SimpleJpaRepository
-    style OrderRepository stroke:#f5c518,stroke-width:3px
-```
-
-OrderRepository của bạn extends 2 interface: JpaRepository<Order, Long> và
-JpaSpecificationExecutor<Order>. JpaRepository 4.1.1 KHÔNG kèm Specification — vì vậy muốn
-dùng Specification phải extends thêm JpaSpecificationExecutor (như OrderRepository đã làm).
-
-Bean Repository thực chất là proxy do Spring Data tạo, chuyển việc chuẩn cho
-SimpleJpaRepository — class này giữ EntityManager, nối tầng Repository xuống tầng tiếp theo.
-
-SimpleJpaRepository chỉ được new, không phải inject: JpaRepositoryFactory gọi new
-SimpleJpaRepository(thông tin entity, entityManager) lúc app chạy. "Inject" chỉ dùng khi
-Spring đưa một bean vào chỗ bạn xin nó (như proxy OrderRepository inject vào service) —
-Simple thì bạn không bao giờ xin hay nhận. Chỗ duy nhất có inject ở đây là EntityManager
-(Spring đưa nó vào factory, rồi factory đưa nó vào câu new).
-
-Bean được Spring cầm đi inject CHÍNH LÀ proxy — SimpleJpaRepository instance nằm bên
-trong proxy (làm target), đi kèm với proxy chứ không phải bean riêng. Spring chỉ biết
-tới proxy, không biết tới Simple.
-
-Sơ đồ cấu trúc tổng (bản vẽ tay của user):
-
-![Bản vẽ tay của user: cấu trúc tổng Spring Data, từ Application.Run tới Database](cau-truc-spring-data-tay.png)
-
-## Flow
-
-Khởi động: Application.Run tạo ApplicationContext → JpaRepositoriesRegistrar quét package
-repository, ghi bean definition vào BeanDefinitionRegistry → context tạo
-JpaRepositoryFactoryBean → FactoryBean new JpaRepositoryFactory → Factory tạo proxy +
-Simple + query executor → context đăng ký proxy làm bean → inject vào Service.
-
-Proxy là cái ngã tư: mỗi method gọi tới sẽ rẽ một hướng khác nhau — method chuẩn rẽ sang
-SimpleJpaRepository, method query rẽ sang bộ chạy query (suy từ tên method + annotation),
-method custom rẽ sang class custom bạn tự viết (nếu có). Bản thân proxy không chứa code
-làm việc thật nào.
-
-### Quy trình tổng (user tổng kết)
-
-factory → tạo proxy + new SimpleJpaRepository → đưa proxy cho Spring container quản lý
-(giờ gọi là bean) → Spring inject bean vào nơi cần → bean hoạt động bằng cách điều hướng
-đến các target mà factory tạo ở trong (SimpleJpaRepository cho method chuẩn, bộ chạy query
-cho method query).
+- [Cấu trúc](02-tang-repository/structure.md) — gồm những gì, quan hệ gì.
+- [Flow](02-tang-repository/flow.md) — chạy ra sao theo thời gian, ai gọi ai.
+- [Class phụ thuộc](02-tang-repository/classes.md) — các class/interface chính và quan hệ phụ thuộc.
 
 ## Ví dụ từ project study: OrderRepository
 

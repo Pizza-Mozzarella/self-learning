@@ -2,6 +2,7 @@
 
 20 thay đổi gần nhất có ý nghĩa, mới nhất trước.
 
+- 2026-10-28: Note 02 tách thành hub + folder 02-tang-repository/ (structure/flow/classes) theo phương án A.
 - 2026-10-28: Refactor cấu trúc repo — gộp hai vùng release/ + temporary/ thành cây concepts/ duy nhất, trạng thái note chuyển sang frontmatter draft/published; note 02 đưa mục Tóm gọn của user lên đầu note.
 - 2026-10-27: Note 02 tách Cấu trúc/Flow, thay ảnh vẽ tay bản cuối (ef78dda).
 - 2026-10-26: Note 01 + note 02 chuyển sơ đồ sang code Mermaid để GitHub render (f34e4af).

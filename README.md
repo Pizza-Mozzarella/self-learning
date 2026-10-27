@@ -15,18 +15,18 @@ Tiêu chí `published`: biên dịch sạch (không lỗi, không cảnh báo l�
 
 ## Cách thêm một note
 
-1. Viết file vào `concepts/<chủ đề>/NN-ten-note.md` với frontmatter `status: draft`.
+1. Viết note hub vào `concepts/<chủ đề>/NN-ten-note.md` với frontmatter `status: draft`, kèm folder `NN-ten-note/` chứa 3 file structure.md/flow.md/classes.md.
 2. Kiểm chứng bằng code chạy (project study hoặc ví dụ tối thiểu).
 3. Khi đã kiểm chứng và đã chốt nội dung thì sửa frontmatter thành `status: published` (không chuyển thư mục), cập nhật `OUTLINE.md` và README chủ đề.
 4. Commit + push (mỗi note một commit riêng để lịch sử rõ ràng).
 
 ## Mẫu note (một khái niệm = một file ngắn)
 
-0. **Frontmatter** — title, summary một dòng, domain, status, created, updated.
+0. **Frontmatter** — title, summary một dòng, domain, status, created, updated. Chỉ note hub mới có frontmatter, file phần không cần frontmatter riêng.
 1. **Tóm gọn của user** (nếu có) — câu chốt nguyên văn của user + lời user, đặt ngay sau tiêu đề, tách riêng khỏi phần giải thích của agent. Bản vẽ tay của user thuộc về mục Cấu trúc, không đặt ở đây.
 2. **Câu chốt** — một dòng, nguyên văn, dùng để nhắc lại sau này.
 3. **Vì sao tồn tại** — vấn đề nó sinh ra để giải quyết.
-4. **Cơ chế** — ai gọi ai, chạy lúc nào, đọc dữ liệu gì để quyết định. Chia thành 3 phần: **Cấu trúc** (gồm những gì, quan hệ gì — sơ đồ cấu trúc và bản vẽ tay của user đặt ở đây), **Flow** (chạy ra sao theo thời gian, ai gọi ai), **Class phụ thuộc** (các class/interface chính và quan hệ phụ thuộc: extends/implements/chứa/tạo/dùng — liệt kê, không vẽ lại Class Diagram đã có ở Cấu trúc). Ba phần phải khớp nhau.
+4. **Cơ chế** — ai gọi ai, chạy lúc nào, đọc dữ liệu gì để quyết định. Mỗi concept tách thành 1 note hub + 1 folder cùng tên chứa 3 file: **structure.md** (Cấu trúc — gồm những gì, quan hệ gì, sơ đồ cấu trúc và bản vẽ tay của user đặt ở đây), **flow.md** (Flow — chạy ra sao theo thời gian, ai gọi ai), **classes.md** (Class phụ thuộc — các class/interface chính và quan hệ phụ thuộc: extends/implements/chứa/tạo/dùng, liệt kê, không vẽ lại Class Diagram đã có ở structure.md). Hub giữ Tóm gọn/Câu chốt/Vì sao/Ví dụ/Bẫy + link tới 3 file. Ba phần phải khớp nhau.
 5. **Ví dụ từ project** — link tới commit/code thật trong repo study.
 6. **Bẫy thường gặp** — lỗi đã mắc hoặc dễ mắc.
 

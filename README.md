@@ -8,6 +8,7 @@ Kho ghi chú tự học: mỗi kiến thức học được → một note ngắ
 - **[temporary/](temporary/)** — nơi tập kết note mới trước khi tổ chức: note mới push thẳng vào đây để user coi trước, rồi dời vào `concepts/` theo lệnh user. Không phải mirror — note chỉ nằm ở một chỗ tại một thời điểm, không nhân đôi.
 - **Phân tầng (đệ quy):** mỗi concept là 1 folder chứa hub + 3 file phần + `layers/` cho concept con; folder concept nằm trong `layers/` của concept cha; folder concept tổng quan gốc đứng ở gốc chủ đề — không xếp tổng quan và đào sâu ngang nhau.
 - **[_index/](_index/topic-map.md)** — mục lục theo tên (topic-map) và thay đổi gần đây (recent-changes).
+- **[HUONG-DAN.md](HUONG-DAN.md)** — hướng dẫn sử dụng repo.
 - **[OUTLINE.md](OUTLINE.md)** — thứ tự đọc theo tầng (không phải thứ tự file).
 - **[log/open-questions.md](log/open-questions.md)** — các câu hỏi và món đang park, chờ điều tra hoặc chờ chốt.
 - **guides/** — chỉ tạo khi có nội dung đầu tiên: `howto/` (quy trình làm việc) và `debugging/` (điều tra lỗi theo triệu chứng).

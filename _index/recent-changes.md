@@ -2,6 +2,7 @@
 
 20 thay đổi gần nhất có ý nghĩa, mới nhất trước.
 
+- 2026-10-29: Thêm HUONG-DAN.md (hướng dẫn sử dụng repo, viết theo luật tổng quát: quy tắc dạng chung, nhánh JPA chỉ làm ví dụ).
 - 2026-10-29: Hub 01/03 chuyển sang mẫu mới (Purpose/Core idea/Mental model/Structure map/Deep dives/Ví dụ/Key takeaways), giữ nguyên nội dung; từ nay giữ hướng mẫu mới luôn, không quay lại mẫu cũ.
 - 2026-10-29: Ảnh user import dời vào folder `resources/` của nhánh (không để lẫn với file .md).
 - 2026-10-29: Rà toàn bộ repo (user lệnh): sửa quy ước tên note còn sót gạch dưới + đặt đúng tầng đệ quy ở 12 README chủ đề; thêm 2 sơ đồ (khởi động, điều hướng) vào flow note 02 theo luật sơ đồ mới; bump updated cho hub 01/03 sau khi sửa link; thêm câu hỏi mở về tiêu đề mục hub tiếng Anh hay tiếng Việt.

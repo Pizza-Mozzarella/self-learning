@@ -25,7 +25,7 @@ Tiêu chí `published`: biên dịch sạch (không lỗi, không cảnh báo l�
 
 0. **Frontmatter** — title, summary một dòng, domain, status, created, updated. Chỉ note hub mới có frontmatter, file phần không cần frontmatter riêng.
 1. **Tóm gọn của user** (nếu có) — câu chốt nguyên văn của user + lời user, đặt ngay sau tiêu đề, tách riêng khỏi phần giải thích của agent. Bản vẽ tay của user thuộc về mục Cấu trúc, không đặt ở đây.
-2. **Câu chốt** — một dòng, nguyên văn, dùng để nhắc lại sau này.
+2. **Câu chốt** — một dòng, nguyên văn, dùng để nhắc lại sau này. Ghi dạng tổng quát nhất mà luật còn đúng; trường hợp cụ thể chỉ nằm dưới làm ví dụ (vd trong mục Ví dụ), không ghi chỉ đích thị riêng một thứ.
 3. **Vì sao tồn tại** — vấn đề nó sinh ra để giải quyết.
 4. **Cơ chế** — ai gọi ai, chạy lúc nào, đọc dữ liệu gì để quyết định. Mỗi concept tách thành 1 note hub + 1 folder cùng tên chứa 3 file: **structure.md** (Cấu trúc — gồm những gì, quan hệ gì, sơ đồ cấu trúc và bản vẽ tay của user đặt ở đây), **flow.md** (Flow — chạy ra sao theo thời gian, ai gọi ai), **classes.md** (Class phụ thuộc — các class/interface chính và quan hệ phụ thuộc: extends/implements/chứa/tạo/dùng, liệt kê, không vẽ lại Class Diagram đã có ở structure.md). Hub giữ Tóm gọn/Câu chốt/Vì sao/Ví dụ/Bẫy + link tới 3 file. Ba phần phải khớp nhau.
 5. **Ví dụ từ project** — link tới commit/code thật trong repo study.

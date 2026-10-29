@@ -89,5 +89,5 @@ Tổng quan trên đây đi qua cả 6 tầng. Mỗi tầng đào sâu riêng:
   cần cả 2 lát cắt.
 - Với id IDENTITY, INSERT chạy ngay lúc persist (để lấy id), không đợi flush/commit —
   commit chỉ làm cho row thành bền.
-- List (orderItemList) không nằm trong row của Order — mỗi item thành row riêng ở bảng con,
-  nối bằng khóa ngoại.
+- Collection không nằm trong row của entity cha — mỗi phần tử thành row riêng ở bảng con,
+  nối bằng khóa ngoại (vd: orderItemList của Order thành các row ở Order_Items).

@@ -31,9 +31,9 @@ classDiagram
     style OrderRepository stroke:#f5c518,stroke-width:3px
 ```
 
-OrderRepository của bạn extends 2 interface: JpaRepository<Order, Long> và
-JpaSpecificationExecutor<Order>. JpaRepository 4.1.1 KHÔNG kèm Specification — vì vậy muốn
-dùng Specification phải extends thêm JpaSpecificationExecutor (như OrderRepository đã làm).
+JpaRepository 4.1.1 KHÔNG kèm Specification — muốn dùng Specification phải extends thêm
+JpaSpecificationExecutor. Ví dụ: OrderRepository extends cả JpaRepository<Order, Long> và
+JpaSpecificationExecutor<Order>.
 
 Bean Repository thực chất là proxy do Spring Data tạo, chuyển việc chuẩn cho
 SimpleJpaRepository — class này giữ EntityManager, nối tầng Repository xuống tầng tiếp theo.

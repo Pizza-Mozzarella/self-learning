@@ -66,4 +66,4 @@ Sơ đồ cấu trúc tổng (bản vẽ tay của user):
 Đào sâu theo từng khu vực: [Flow](flow.md) (khởi động và điều hướng lúc runtime),
 [Class phụ thuộc](classes.md) (vai trò và quan hệ từng thành phần).
 
-[← Về note hub](../02-tang-repository.md)
+[← Về note hub](02-tang-repository.md)

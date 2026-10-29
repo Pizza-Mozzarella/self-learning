@@ -13,7 +13,7 @@ Phạm vi: JPA là đặc tả, Hibernate là thư viện thực thi — mapping
 
 ## Quy tắc
 
-- Note mới: file `NN-ten-note.md`, số tiếp theo, đặt đúng tầng (tổng quan ở gốc, đào sâu từng tầng dưới `layers/`, nhánh mới mở folder riêng); không đổi tên file cũ.
+- Note mới: folder `NN-ten-note/`, số tiếp theo, đặt đúng tầng (folder concept tổng quan gốc ở gốc chủ đề, folder concept con ở `layers/` trong folder concept cha); không đổi tên file cũ.
 - Trạng thái note nằm ở frontmatter: `status: draft` (chưa kiểm chứng hoặc chưa chốt) hoặc `status: published` (đã kiểm chứng bằng code chạy và đã chốt). Đổi trạng thái thì sửa frontmatter, không chuyển thư mục.
-- Note tổng quan đứng ở gốc chủ đề, note đào sâu từng tầng gom dưới `layers/` — không xếp tổng quan và đào sâu ngang nhau.
-- `layers/` thuộc nhánh các tầng của stack (hiện do note 01 tổng quan hành trình đi qua các tầng), không phải của chung cả chủ đề. Note cha mới thì mở folder nhánh riêng ở gốc chủ đề, không nhét con của cha mới vào `layers/`.
+- Folder concept tổng quan gốc đứng ở gốc chủ đề, folder concept con nằm trong `layers/` của concept cha — không xếp tổng quan và đào sâu ngang nhau.
+- `layers/` nằm trong folder concept cha và thuộc về concept đó (hiện: `layers/` của note 01 chứa note 02/03; `layers/` của note 02 sẽ chứa concept nào là layer của 02). Concept con không nằm ở `layers/` của chủ đề mà nằm ở `layers/` của concept cha nó.

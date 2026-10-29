@@ -28,7 +28,7 @@ không chứa code làm việc thật nào — bean mà Spring inject chính là
 
 ## Structure map
 
-Bản đồ tổng thể đầy đủ nằm ở [Cấu trúc](02-tang-repository/structure.md) (cây kế thừa
+Bản đồ tổng thể đầy đủ nằm ở [Cấu trúc](structure.md) (cây kế thừa
 Spring Data JPA 4.1.1 và bản vẽ tay từ Application.Run tới Database). Bản thu gọn:
 
 Gồm 3 tầng tạo ra nhau lúc startup: JpaRepositoryFactoryBean tạo JpaRepositoryFactory,
@@ -42,18 +42,18 @@ EntityManager nối xuống tầng EntityManager.
 definition → context tạo FactoryBean → Factory tạo proxy + Simple + executor → proxy
 thành bean → inject vào Service. Lúc chạy, method chuẩn rẽ sang Simple, method query rẽ
 sang executor, method custom rẽ sang class custom.
-[Chi tiết đầy đủ](02-tang-repository/flow.md).
+[Chi tiết đầy đủ](flow.md).
 
 **Thành phần (thu gọn):** FactoryBean new Factory và chứa nó; Factory tạo proxy (JDK
 dynamic proxy), new Simple, tạo executor; proxy điều hướng, không có code làm việc;
 Simple làm việc thật cho method chuẩn, giữ EM qua constructor, không phải bean; executor
 phân tích tên method thành query lúc startup, runtime chỉ chạy; Proxy EntityManager
 target tới EM thật của transaction hiện tại.
-[Chi tiết đầy đủ](02-tang-repository/classes.md).
+[Chi tiết đầy đủ](classes.md).
 
 Sơ đồ đi tiếp xuống tầng EntityManager (Proxy EntityManager → Transaction →
 EntityManager → Persistence Context → CONNECTION → Hikari → Database) — chi tiết ở
-[note 03](03-tang-entitymanager.md).
+[note 03](../03-tang-entitymanager/03-tang-entitymanager.md).
 
 ## Ví dụ từ project study: OrderRepository
 

@@ -2,6 +2,8 @@
 
 20 thay đổi gần nhất có ý nghĩa, mới nhất trước.
 
+- 2026-10-29: Rà toàn bộ repo (user lệnh): sửa quy ước tên note còn sót gạch dưới + đặt đúng tầng đệ quy ở 12 README chủ đề; thêm 2 sơ đồ (khởi động, điều hướng) vào flow note 02 theo luật sơ đồ mới; bump updated cho hub 01/03 sau khi sửa link; thêm câu hỏi mở về tiêu đề mục hub tiếng Anh hay tiếng Việt.
+- 2026-10-29: Mô hình đệ quy (user chốt): mỗi concept là 1 folder chứa hub + 3 file phần + layers/ cho concept con; folder concept nằm trong layers/ của concept cha; nhánh JPA dời xong (01 ở gốc chủ đề, 02/03 trong layers/ của 01); layers/ trong folder 02/03 chưa tạo vì chưa có concept con.
 - 2026-10-29: Cây kế thừa trong structure note 02 bỏ node OrderRepository (luật tổng quát: cây chỉ vẽ hệ thống chung, repo cụ thể chỉ nằm ở mục Ví dụ).
 - 2026-10-29: Mẫu note theo Bản B (user chốt): hub đọc độc lập được — Structure map + Deep dives kèm đoạn thu gọn, folder giữ chi tiết đầy đủ; áp pilot trên note 02.
 - 2026-10-29: Pilot mẫu hub mới trên note 02 (Purpose/Core idea/Mental model/Structure map/Deep dives/Ví dụ/Takeaways, bỏ luật mở đầu bằng lời user) + navigation guide trong structure.md + backlink file phần về structure; classes.md hiểu rộng là thành phần tùy bản chất concept; note 01/03 để nguyên chờ nội dung.

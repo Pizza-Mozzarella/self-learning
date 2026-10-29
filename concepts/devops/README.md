@@ -10,5 +10,5 @@ Phạm vi: đưa ứng dụng lên môi trường thật — chặng 4 của roa
 
 ## Quy tắc
 
-- Note mới: file `NN_ten-note.md`, số tiếp theo; không đổi tên file cũ.
+- Note mới: folder `NN-ten-note/`, số tiếp theo, đặt đúng tầng (folder concept tổng quan gốc ở gốc chủ đề, folder concept con ở `layers/` trong folder concept cha); không đổi tên file cũ.
 - Trạng thái note nằm ở frontmatter: `status: draft` (chưa kiểm chứng hoặc chưa chốt) hoặc `status: published` (đã kiểm chứng bằng code chạy và đã chốt). Đổi trạng thái thì sửa frontmatter, không chuyển thư mục.

@@ -12,3 +12,4 @@ Hàng đợi điều tra và các món đang park. Đánh dấu `[x]` và link t
 - [ ] Class Diagram phía EM (Session extends EntityManager, SessionImpl...) — user biết còn thiếu, vẽ sau cũng được.
 - [ ] mermaid.ink chưa có trong danh sách cho phép vĩnh viễn (cần user bật "Site always allowed").
 - [ ] Bước 5 chương Order: đồng bộ 2 chiều, JSON recursion, LazyInitializationException (chưa bắt đầu).
+- [ ] Tiêu đề mục hub để tiếng Anh (Purpose/Core idea/...) theo đề xuất hay chuyển sang tiếng Việt? (pilot note 02 đang để tiếng Anh).

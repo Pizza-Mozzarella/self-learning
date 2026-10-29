@@ -4,7 +4,7 @@ summary: "Bảng không bao giờ chứa object — Hibernate tháo object thàn
 domain: jpa-hibernate
 status: draft
 created: 2026-10-26
-updated: 2026-10-28
+updated: 2026-10-29
 ---
 
 # Entity object thành row trên bảng (theo tầng)
@@ -80,8 +80,8 @@ Items không nằm trong row của Order — mỗi item thành 1 row riêng ở 
 
 Tổng quan trên đây đi qua cả 6 tầng. Mỗi tầng đào sâu riêng:
 
-- [Tầng Repository](layers/02-tang-repository.md)
-- [Tầng EntityManager](layers/03-tang-entitymanager.md)
+- [Tầng Repository](layers/02-tang-repository/02-tang-repository.md)
+- [Tầng EntityManager](layers/03-tang-entitymanager/03-tang-entitymanager.md)
 
 ## Bẫy
 

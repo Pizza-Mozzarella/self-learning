@@ -4,7 +4,7 @@ summary: "EntityManager là object trung tâm của JPA để quản lý entity.
 domain: jpa-hibernate
 status: draft
 created: 2026-10-27
-updated: 2026-10-28
+updated: 2026-10-29
 ---
 
 # Tầng EntityManager (JPA)
@@ -35,7 +35,7 @@ riêng bên dưới, proxy chuyển tiếp đúng Session của transaction hi�
 
 ## Cấu trúc
 
-![Bản vẽ tay của user: cấu trúc tổng Spring Data, từ Application.Run tới Database](../cau-truc-spring-data-tay.png)
+![Bản vẽ tay của user: cấu trúc tổng Spring Data, từ Application.Run tới Database](../../cau-truc-spring-data-tay.png)
 
 Cấu trúc tầng này (đã chốt theo sơ đồ trên):
 

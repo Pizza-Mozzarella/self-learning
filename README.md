@@ -6,7 +6,7 @@ Kho ghi chú tự học: mỗi kiến thức học được → một note ngắ
 
 - **[concepts/](concepts/)** — một cây duy nhất, 13 chủ đề. Mỗi note là một file, trạng thái nằm ở frontmatter: `status: draft` (chưa kiểm chứng hoặc chưa chốt) hoặc `status: published` (đã kiểm chứng bằng code chạy và đã chốt).
 - **[temporary/](temporary/)** — nơi tập kết note mới trước khi tổ chức: note mới push thẳng vào đây để user coi trước, rồi dời vào `concepts/` theo lệnh user. Không phải mirror — note chỉ nằm ở một chỗ tại một thời điểm, không nhân đôi.
-- **Phân tầng:** note tổng quan đứng ở gốc chủ đề, note đào sâu từng tầng gom dưới `layers/` của chủ đề đó — không xếp tổng quan và đào sâu ngang nhau.
+- **Phân tầng (đệ quy):** mỗi concept là 1 folder chứa hub + 3 file phần + `layers/` cho concept con; folder concept nằm trong `layers/` của concept cha; folder concept tổng quan gốc đứng ở gốc chủ đề — không xếp tổng quan và đào sâu ngang nhau.
 - **[_index/](_index/topic-map.md)** — mục lục theo tên (topic-map) và thay đổi gần đây (recent-changes).
 - **[OUTLINE.md](OUTLINE.md)** — thứ tự đọc theo tầng (không phải thứ tự file).
 - **[log/open-questions.md](log/open-questions.md)** — các câu hỏi và món đang park, chờ điều tra hoặc chờ chốt.
@@ -17,7 +17,7 @@ Tiêu chí `published`: biên dịch sạch (không lỗi, không cảnh báo l�
 
 ## Cách thêm một note
 
-1. Viết note hub đúng tầng của nó với frontmatter `status: draft`, kèm folder `NN-ten-note/` chứa 3 file structure.md/flow.md/classes.md: note tổng quan ở `concepts/<chủ đề>/NN-ten-note.md`, note đào sâu từng tầng ở `concepts/<chủ đề>/layers/NN-ten-note.md`, note của nhánh mới ở folder nhánh riêng.
+1. Viết note hub đúng tầng của nó với frontmatter `status: draft`, trong folder `NN-ten-note/` của nó (hub `NN-ten-note.md` + 3 file structure.md/flow.md/classes.md + `layers/` cho concept con nếu có): folder concept tổng quan gốc ở `concepts/<chủ đề>/NN-ten-note/`, folder concept con ở `layers/NN-ten-note/` trong folder concept cha.
 2. Kiểm chứng bằng code chạy (project study hoặc ví dụ tối thiểu).
 3. Khi đã kiểm chứng và đã chốt nội dung thì sửa frontmatter thành `status: published` (không chuyển thư mục), cập nhật `OUTLINE.md` và README chủ đề.
 4. Commit + push (mỗi note một commit riêng để lịch sử rõ ràng).
@@ -34,9 +34,9 @@ Tiêu chí `published`: biên dịch sạch (không lỗi, không cảnh báo l�
 7. **Key takeaways / open questions** — điểm cần nhớ và câu hỏi chưa giải quyết (nếu có).
 Không bắt buộc đủ mọi mục — bỏ mục không phù hợp thay vì tạo nội dung hình thức.
 
-Ba file phần: **structure.md** (Cấu trúc — gồm những gì, quan hệ gì, sơ đồ cấu trúc và bản vẽ tay của user đặt ở đây, kèm Navigation guide: đọc phần nào trước, vì sao, rồi đi flow hay classes, khi nào quay lại sơ đồ tổng thể), **flow.md** (Flow — chạy ra sao theo thời gian, ai gọi ai, liên kết về thành phần tương ứng trong structure.md), **classes.md** (Thành phần và trách nhiệm — vai trò và quan hệ của từng thành phần, đơn vị tùy bản chất concept: class/interface/module/process/service/component/entity, liệt kê, không vẽ lại Class Diagram đã có ở structure.md). Hub giữ Purpose/Core idea/Mental model/Structure map/Deep dives/Ví dụ/Takeaways + link tới 3 file. Ba phần phải khớp nhau, không sao chép cùng một giải thích sang nhiều file. Phần nào không phù hợp với concept thì không tạo file mà ghi nhận 1 dòng trong hub. File phần giữ chi tiết đầy đủ cho ai muốn đào sâu; hub phải đọc độc lập được mà không cần mở file phần. Đoạn thu gọn trong hub viết mới ngắn gọn, không sao chép nguyên khối từ file phần.
+Mỗi concept là 1 folder `NN-ten-note/` chứa hub + 3 file phần + `layers/` cho concept con; folder concept nằm trong `layers/` của concept cha. Ba file phần: **structure.md** (Cấu trúc — gồm những gì, quan hệ gì, sơ đồ cấu trúc và bản vẽ tay của user đặt ở đây, kèm Navigation guide: đọc phần nào trước, vì sao, rồi đi flow hay classes, khi nào quay lại sơ đồ tổng thể), **flow.md** (Flow — chạy ra sao theo thời gian, ai gọi ai, liên kết về thành phần tương ứng trong structure.md), **classes.md** (Thành phần và trách nhiệm — vai trò và quan hệ của từng thành phần, đơn vị tùy bản chất concept: class/interface/module/process/service/component/entity, liệt kê, không vẽ lại Class Diagram đã có ở structure.md). Hub giữ Purpose/Core idea/Mental model/Structure map/Deep dives/Ví dụ/Takeaways + link tới 3 file. Ba phần phải khớp nhau, không sao chép cùng một giải thích sang nhiều file. Phần nào không phù hợp với concept thì không tạo file mà ghi nhận 1 dòng trong hub. File phần giữ chi tiết đầy đủ cho ai muốn đào sâu; hub phải đọc độc lập được mà không cần mở file phần. Đoạn thu gọn trong hub viết mới ngắn gọn, không sao chép nguyên khối từ file phần.
 
-Sơ đồ trong note viết bằng code Mermaid (GitHub tự render); bản vẽ tay của user giữ file PNG.
+Sơ đồ trong note viết bằng code Mermaid (GitHub tự render); bản vẽ tay của user giữ file PNG. Chỗ nào giải thích cần sơ đồ thì code sơ đồ vào, không để giải thích cần sơ đồ mà không có sơ đồ.
 
 ## Quy tắc đánh số (để khỏi refactor sau này)
 

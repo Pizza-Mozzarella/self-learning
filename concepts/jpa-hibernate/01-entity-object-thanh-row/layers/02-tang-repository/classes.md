@@ -26,6 +26,6 @@ reference và gọi method), INJECT (container đưa bean vào chỗ xin), TARGE
 - **Query executor** (vd PartTreeJpaQuery cho findWithDetailsById): phân tích tên
   method thành object query chuẩn bị sẵn lúc startup, runtime chỉ chạy.
 - **Proxy EntityManager**: TARGET là EntityManager thật gắn với transaction hiện
-  tại — chi tiết ở [note 03](../03-tang-entitymanager.md).
+  tại — chi tiết ở [note 03](../03-tang-entitymanager/03-tang-entitymanager.md).
 
-[← Về note hub](../02-tang-repository.md) | [← Về structure](structure.md)
+[← Về note hub](02-tang-repository.md) | [← Về structure](structure.md)

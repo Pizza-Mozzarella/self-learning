@@ -2,6 +2,7 @@
 
 20 thay đổi gần nhất có ý nghĩa, mới nhất trước.
 
+- 2026-10-29: Cây kế thừa trong structure note 02 bỏ node OrderRepository (luật tổng quát: cây chỉ vẽ hệ thống chung, repo cụ thể chỉ nằm ở mục Ví dụ).
 - 2026-10-29: Mẫu note theo Bản B (user chốt): hub đọc độc lập được — Structure map + Deep dives kèm đoạn thu gọn, folder giữ chi tiết đầy đủ; áp pilot trên note 02.
 - 2026-10-29: Pilot mẫu hub mới trên note 02 (Purpose/Core idea/Mental model/Structure map/Deep dives/Ví dụ/Takeaways, bỏ luật mở đầu bằng lời user) + navigation guide trong structure.md + backlink file phần về structure; classes.md hiểu rộng là thành phần tùy bản chất concept; note 01/03 để nguyên chờ nội dung.
 - 2026-10-29: Thêm temporary/ — note mới push thẳng vào đây để user coi trước, rồi tổ chức vào concepts/ theo lệnh user từ từ (nơi tập kết, không phải mirror 2 vùng).

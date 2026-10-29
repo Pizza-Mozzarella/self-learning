@@ -31,19 +31,15 @@ classDiagram
     class JpaSpecificationExecutor
     class JpaRepositoryImplementation
     class SimpleJpaRepository
-    class OrderRepository
     Repository <|-- CrudRepository
     CrudRepository <|-- ListCrudRepository
     PagingAndSortingRepository <|-- ListPagingAndSortingRepository
     ListCrudRepository <|-- JpaRepository
     ListPagingAndSortingRepository <|-- JpaRepository
     QueryByExampleExecutor <|-- JpaRepository
-    JpaRepository <|-- OrderRepository
-    JpaSpecificationExecutor <|-- OrderRepository
     JpaRepository <|-- JpaRepositoryImplementation
     JpaSpecificationExecutor <|-- JpaRepositoryImplementation
     JpaRepositoryImplementation <|.. SimpleJpaRepository
-    style OrderRepository stroke:#f5c518,stroke-width:3px
 ```
 
 JpaRepository 4.1.1 KHÔNG kèm Specification — muốn dùng Specification phải extends thêm

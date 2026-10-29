@@ -25,12 +25,16 @@ Tiêu chí `published`: biên dịch sạch (không lỗi, không cảnh báo l�
 ## Mẫu note (một khái niệm = một file ngắn)
 
 0. **Frontmatter** — title, summary một dòng, domain, status, created, updated. Chỉ note hub mới có frontmatter, file phần không cần frontmatter riêng.
-1. **Tóm gọn của user** (nếu có) — câu chốt nguyên văn của user + lời user, đặt ngay sau tiêu đề, tách riêng khỏi phần giải thích của agent. Bản vẽ tay của user thuộc về mục Cấu trúc, không đặt ở đây.
-2. **Câu chốt** — một dòng, nguyên văn, dùng để nhắc lại sau này. Ghi dạng tổng quát nhất mà luật còn đúng; trường hợp cụ thể chỉ nằm dưới làm ví dụ (vd trong mục Ví dụ), không ghi chỉ đích thị riêng một thứ.
-3. **Vì sao tồn tại** — vấn đề nó sinh ra để giải quyết.
-4. **Cơ chế** — ai gọi ai, chạy lúc nào, đọc dữ liệu gì để quyết định. Mỗi concept tách thành 1 note hub + 1 folder cùng tên chứa 3 file: **structure.md** (Cấu trúc — gồm những gì, quan hệ gì, sơ đồ cấu trúc và bản vẽ tay của user đặt ở đây), **flow.md** (Flow — chạy ra sao theo thời gian, ai gọi ai), **classes.md** (Class phụ thuộc — các class/interface chính và quan hệ phụ thuộc: extends/implements/chứa/tạo/dùng, liệt kê, không vẽ lại Class Diagram đã có ở structure.md). Hub giữ Tóm gọn/Câu chốt/Vì sao/Ví dụ/Bẫy + link tới 3 file. Ba phần phải khớp nhau.
-5. **Ví dụ từ project** — link tới commit/code thật trong repo study.
-6. **Bẫy thường gặp** — lỗi đã mắc hoặc dễ mắc.
+1. **Purpose** — concept giải quyết vấn đề gì?
+2. **Core idea** — ý tưởng cốt lõi, một dòng, nguyên văn, dùng để nhắc lại sau này. Ghi dạng tổng quát nhất mà luật còn đúng; trường hợp cụ thể chỉ nằm dưới làm ví dụ (vd trong mục Ví dụ), không ghi chỉ đích thị riêng một thứ.
+3. **Mental model** — giải thích ngắn giúp hình dung concept, không vẽ lại sơ đồ tổng thể.
+4. **Structure map** — liên kết nổi bật đến `structure.md`, kèm mô tả người đọc sẽ thấy gì ở đó.
+5. **Deep dives** — các phần `flow.md`, `classes.md` và tài liệu chuyên sâu khác nếu có.
+6. **Ví dụ từ project** — link tới commit/code thật trong repo study.
+7. **Key takeaways / open questions** — điểm cần nhớ và câu hỏi chưa giải quyết (nếu có).
+Không bắt buộc đủ mọi mục — bỏ mục không phù hợp thay vì tạo nội dung hình thức.
+
+Ba file phần: **structure.md** (Cấu trúc — gồm những gì, quan hệ gì, sơ đồ cấu trúc và bản vẽ tay của user đặt ở đây, kèm Navigation guide: đọc phần nào trước, vì sao, rồi đi flow hay classes, khi nào quay lại sơ đồ tổng thể), **flow.md** (Flow — chạy ra sao theo thời gian, ai gọi ai, liên kết về thành phần tương ứng trong structure.md), **classes.md** (Thành phần và trách nhiệm — vai trò và quan hệ của từng thành phần, đơn vị tùy bản chất concept: class/interface/module/process/service/component/entity, liệt kê, không vẽ lại Class Diagram đã có ở structure.md). Hub giữ Purpose/Core idea/Mental model/Structure map/Deep dives/Ví dụ/Takeaways + link tới 3 file. Ba phần phải khớp nhau, không sao chép cùng một giải thích sang nhiều file. Phần nào không phù hợp với concept thì không tạo file mà ghi nhận 1 dòng trong hub.
 
 Sơ đồ trong note viết bằng code Mermaid (GitHub tự render); bản vẽ tay của user giữ file PNG.
 

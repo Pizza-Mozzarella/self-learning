@@ -2,6 +2,7 @@
 
 20 thay đổi gần nhất có ý nghĩa, mới nhất trước.
 
+- 2026-10-29: Pilot mẫu hub mới trên note 02 (Purpose/Core idea/Mental model/Structure map/Deep dives/Ví dụ/Takeaways, bỏ luật mở đầu bằng lời user) + navigation guide trong structure.md + backlink file phần về structure; classes.md hiểu rộng là thành phần tùy bản chất concept; note 01/03 để nguyên chờ nội dung.
 - 2026-10-29: Thêm temporary/ — note mới push thẳng vào đây để user coi trước, rồi tổ chức vào concepts/ theo lệnh user từ từ (nơi tập kết, không phải mirror 2 vùng).
 - 2026-10-29: Luật ghi chép mới — câu chốt ghi dạng tổng quát nhất, trường hợp cụ thể chỉ làm ví dụ; viết lại 2 chỗ đang ghi đích thị riêng một thứ (bẫy collection ở note 01, Specification ở structure note 02) + ghi luật vào mẫu note.
 - 2026-10-28: Ghi rõ layers/ thuộc nhánh các tầng (con của note 01) + luật note cha mới mở folder nhánh riêng.

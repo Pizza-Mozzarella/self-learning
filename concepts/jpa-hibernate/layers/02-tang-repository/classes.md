@@ -28,4 +28,4 @@ reference và gọi method), INJECT (container đưa bean vào chỗ xin), TARGE
 - **Proxy EntityManager**: TARGET là EntityManager thật gắn với transaction hiện
   tại — chi tiết ở [note 03](../03-tang-entitymanager.md).
 
-[← Về note hub](../02-tang-repository.md)
+[← Về note hub](../02-tang-repository.md) | [← Về structure](structure.md)

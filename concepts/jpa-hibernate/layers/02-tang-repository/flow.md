@@ -17,4 +17,4 @@ factory → tạo proxy + new SimpleJpaRepository → đưa proxy cho Spring con
 đến các target mà factory tạo ở trong (SimpleJpaRepository cho method chuẩn, bộ chạy query
 cho method query).
 
-[← Về note hub](../02-tang-repository.md)
+[← Về note hub](../02-tang-repository.md) | [← Về structure](structure.md)

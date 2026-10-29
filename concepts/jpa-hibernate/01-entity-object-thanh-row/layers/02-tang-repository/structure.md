@@ -61,7 +61,7 @@ tới proxy, không biết tới Simple.
 
 Sơ đồ cấu trúc tổng (bản vẽ tay của user):
 
-![Bản vẽ tay của user: cấu trúc tổng Spring Data, từ Application.Run tới Database](../../cau-truc-spring-data-tay.png)
+![Bản vẽ tay của user: cấu trúc tổng Spring Data, từ Application.Run tới Database](../../resources/cau-truc-spring-data-tay.png)
 
 Đào sâu theo từng khu vực: [Flow](flow.md) (khởi động và điều hướng lúc runtime),
 [Class phụ thuộc](classes.md) (vai trò và quan hệ từng thành phần).

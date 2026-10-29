@@ -36,7 +36,7 @@ Không bắt buộc đủ mọi mục — bỏ mục không phù hợp thay vì 
 
 Mỗi concept là 1 folder `NN-ten-note/` chứa hub + 3 file phần + `layers/` cho concept con; folder concept nằm trong `layers/` của concept cha. Ba file phần: **structure.md** (Cấu trúc — gồm những gì, quan hệ gì, sơ đồ cấu trúc và bản vẽ tay của user đặt ở đây, kèm Navigation guide: đọc phần nào trước, vì sao, rồi đi flow hay classes, khi nào quay lại sơ đồ tổng thể), **flow.md** (Flow — chạy ra sao theo thời gian, ai gọi ai, liên kết về thành phần tương ứng trong structure.md), **classes.md** (Thành phần và trách nhiệm — vai trò và quan hệ của từng thành phần, đơn vị tùy bản chất concept: class/interface/module/process/service/component/entity, liệt kê, không vẽ lại Class Diagram đã có ở structure.md). Hub giữ Purpose/Core idea/Mental model/Structure map/Deep dives/Ví dụ/Takeaways + link tới 3 file. Ba phần phải khớp nhau, không sao chép cùng một giải thích sang nhiều file. Phần nào không phù hợp với concept thì không tạo file mà ghi nhận 1 dòng trong hub. File phần giữ chi tiết đầy đủ cho ai muốn đào sâu; hub phải đọc độc lập được mà không cần mở file phần. Đoạn thu gọn trong hub viết mới ngắn gọn, không sao chép nguyên khối từ file phần.
 
-Sơ đồ trong note viết bằng code Mermaid (GitHub tự render); bản vẽ tay của user giữ file PNG. Chỗ nào giải thích cần sơ đồ thì code sơ đồ vào, không để giải thích cần sơ đồ mà không có sơ đồ.
+Sơ đồ trong note viết bằng code Mermaid (GitHub tự render); bản vẽ tay của user giữ file PNG trong folder `resources/` của nhánh, không để lẫn với file .md. Chỗ nào giải thích cần sơ đồ thì code sơ đồ vào, không để giải thích cần sơ đồ mà không có sơ đồ.
 
 ## Quy tắc đánh số (để khỏi refactor sau này)
 

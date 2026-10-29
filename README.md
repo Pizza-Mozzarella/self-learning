@@ -5,6 +5,7 @@ Kho ghi chú tự học: mỗi kiến thức học được → một note ngắ
 ## Cấu trúc
 
 - **[concepts/](concepts/)** — một cây duy nhất, 13 chủ đề. Mỗi note là một file, trạng thái nằm ở frontmatter: `status: draft` (chưa kiểm chứng hoặc chưa chốt) hoặc `status: published` (đã kiểm chứng bằng code chạy và đã chốt).
+- **[temporary/](temporary/)** — nơi tập kết note mới trước khi tổ chức: note mới push thẳng vào đây để user coi trước, rồi dời vào `concepts/` theo lệnh user. Không phải mirror — note chỉ nằm ở một chỗ tại một thời điểm, không nhân đôi.
 - **Phân tầng:** note tổng quan đứng ở gốc chủ đề, note đào sâu từng tầng gom dưới `layers/` của chủ đề đó — không xếp tổng quan và đào sâu ngang nhau.
 - **[_index/](_index/topic-map.md)** — mục lục theo tên (topic-map) và thay đổi gần đây (recent-changes).
 - **[OUTLINE.md](OUTLINE.md)** — thứ tự đọc theo tầng (không phải thứ tự file).

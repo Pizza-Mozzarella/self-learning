@@ -2,6 +2,7 @@
 
 20 thay đổi gần nhất có ý nghĩa, mới nhất trước.
 
+- 2026-10-29: Hub 01/03 chuyển sang mẫu mới (Purpose/Core idea/Mental model/Structure map/Deep dives/Ví dụ/Key takeaways), giữ nguyên nội dung; từ nay giữ hướng mẫu mới luôn, không quay lại mẫu cũ.
 - 2026-10-29: Ảnh user import dời vào folder `resources/` của nhánh (không để lẫn với file .md).
 - 2026-10-29: Rà toàn bộ repo (user lệnh): sửa quy ước tên note còn sót gạch dưới + đặt đúng tầng đệ quy ở 12 README chủ đề; thêm 2 sơ đồ (khởi động, điều hướng) vào flow note 02 theo luật sơ đồ mới; bump updated cho hub 01/03 sau khi sửa link; thêm câu hỏi mở về tiêu đề mục hub tiếng Anh hay tiếng Việt.
 - 2026-10-29: Mô hình đệ quy (user chốt): mỗi concept là 1 folder chứa hub + 3 file phần + layers/ cho concept con; folder concept nằm trong layers/ của concept cha; nhánh JPA dời xong (01 ở gốc chủ đề, 02/03 trong layers/ của 01); layers/ trong folder 02/03 chưa tạo vì chưa có concept con.

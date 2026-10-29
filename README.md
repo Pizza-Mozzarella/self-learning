@@ -28,13 +28,13 @@ Tiêu chí `published`: biên dịch sạch (không lỗi, không cảnh báo l�
 1. **Purpose** — concept giải quyết vấn đề gì?
 2. **Core idea** — ý tưởng cốt lõi, một dòng, nguyên văn, dùng để nhắc lại sau này. Ghi dạng tổng quát nhất mà luật còn đúng; trường hợp cụ thể chỉ nằm dưới làm ví dụ (vd trong mục Ví dụ), không ghi chỉ đích thị riêng một thứ.
 3. **Mental model** — giải thích ngắn giúp hình dung concept, không vẽ lại sơ đồ tổng thể.
-4. **Structure map** — liên kết nổi bật đến `structure.md`, kèm mô tả người đọc sẽ thấy gì ở đó.
-5. **Deep dives** — các phần `flow.md`, `classes.md` và tài liệu chuyên sâu khác nếu có.
+4. **Structure map** — liên kết nổi bật đến `structure.md` + bản đồ thu gọn đủ hiểu độc lập (thành phần + quan hệ chính); sơ đồ và chi tiết đầy đủ nằm ở file phần.
+5. **Deep dives** — mỗi phần kèm đoạn thu gọn đủ hiểu (luồng chính, trách nhiệm chính) + link tới chi tiết đầy đủ ở `flow.md`, `classes.md` và tài liệu chuyên sâu khác nếu có.
 6. **Ví dụ từ project** — link tới commit/code thật trong repo study.
 7. **Key takeaways / open questions** — điểm cần nhớ và câu hỏi chưa giải quyết (nếu có).
 Không bắt buộc đủ mọi mục — bỏ mục không phù hợp thay vì tạo nội dung hình thức.
 
-Ba file phần: **structure.md** (Cấu trúc — gồm những gì, quan hệ gì, sơ đồ cấu trúc và bản vẽ tay của user đặt ở đây, kèm Navigation guide: đọc phần nào trước, vì sao, rồi đi flow hay classes, khi nào quay lại sơ đồ tổng thể), **flow.md** (Flow — chạy ra sao theo thời gian, ai gọi ai, liên kết về thành phần tương ứng trong structure.md), **classes.md** (Thành phần và trách nhiệm — vai trò và quan hệ của từng thành phần, đơn vị tùy bản chất concept: class/interface/module/process/service/component/entity, liệt kê, không vẽ lại Class Diagram đã có ở structure.md). Hub giữ Purpose/Core idea/Mental model/Structure map/Deep dives/Ví dụ/Takeaways + link tới 3 file. Ba phần phải khớp nhau, không sao chép cùng một giải thích sang nhiều file. Phần nào không phù hợp với concept thì không tạo file mà ghi nhận 1 dòng trong hub.
+Ba file phần: **structure.md** (Cấu trúc — gồm những gì, quan hệ gì, sơ đồ cấu trúc và bản vẽ tay của user đặt ở đây, kèm Navigation guide: đọc phần nào trước, vì sao, rồi đi flow hay classes, khi nào quay lại sơ đồ tổng thể), **flow.md** (Flow — chạy ra sao theo thời gian, ai gọi ai, liên kết về thành phần tương ứng trong structure.md), **classes.md** (Thành phần và trách nhiệm — vai trò và quan hệ của từng thành phần, đơn vị tùy bản chất concept: class/interface/module/process/service/component/entity, liệt kê, không vẽ lại Class Diagram đã có ở structure.md). Hub giữ Purpose/Core idea/Mental model/Structure map/Deep dives/Ví dụ/Takeaways + link tới 3 file. Ba phần phải khớp nhau, không sao chép cùng một giải thích sang nhiều file. Phần nào không phù hợp với concept thì không tạo file mà ghi nhận 1 dòng trong hub. File phần giữ chi tiết đầy đủ cho ai muốn đào sâu; hub phải đọc độc lập được mà không cần mở file phần. Đoạn thu gọn trong hub viết mới ngắn gọn, không sao chép nguyên khối từ file phần.
 
 Sơ đồ trong note viết bằng code Mermaid (GitHub tự render); bản vẽ tay của user giữ file PNG.
 

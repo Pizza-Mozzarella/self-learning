@@ -4,7 +4,7 @@ summary: "EntityManager là object trung tâm của JPA để quản lý entity.
 domain: jpa-hibernate
 status: draft
 created: 2026-10-27
-updated: 2026-10-29
+updated: 2026-10-30
 ---
 
 # Tầng EntityManager (JPA)
@@ -29,25 +29,33 @@ thật riêng bên dưới, proxy chuyển tiếp đúng Session của transacti
 
 ## Structure map
 
-Sơ đồ cho chủ đề này: sơ đồ cấu trúc tổng (bản vẽ tay của user).
-
-![Bản vẽ tay của user: cấu trúc tổng Spring Data, từ Application.Run tới Database](../../resources/cau-truc-spring-data-tay.png)
-
-Cấu trúc tầng này (đã chốt theo sơ đồ trên):
-
-- Transaction chứa EntityManager; EntityManager chứa Persistence Context (cha chết con chết).
-- Proxy EntityManager (trong container nhưng không phải bean) target tới EntityManager thật của transaction hiện tại.
-- EntityManager dùng CONNECTION; Hikari cấp CONNECTION; CONNECTION tới Database.
+Chuỗi chứa: Transaction chứa EntityManager, EntityManager chứa Persistence Context (cha
+chết con chết). EntityManager bạn cầm là shared proxy (trong container nhưng không phải
+bean), target tới EntityManager thật của transaction hiện tại; EntityManager dùng
+CONNECTION do Hikari cấp, CONNECTION tới Database. Bản đồ đầy đủ + bản vẽ tay ở
+[Cấu trúc](structure.md).
 
 ## Deep dives
 
-SimpleJpaRepository giữ một EntityManager (qua constructor) — đó là cầu nối từ tầng
-Repository xuống tầng này. EntityManager quản lý Persistence Context: entity nào nó giữ
-thì thành Managed, thay đổi trên Managed entity được dirty checking phát hiện và flush
-xuống DB.
+**Vòng đời:** vòng đời là quan hệ của entity với Persistence Context — 4 trạng thái
+Transient/Managed/Detached/Removed; vào Managed có 3 đường (persist, load, merge); hết
+transaction → Detached, remove → Removed; rollback đưa về Detached, không bao giờ về
+Transient. Sơ đồ trạng thái đầy đủ ở [Flow](flow.md).
 
-Đây mới là phần mở đầu — các phần đào sâu (vòng đời entity, Persistence Context, flush,
-cascade) đang viết dở, sẽ điền vào file phần khi hoàn thiện.
+**Thay đổi xuống DB:** chỉ xuống khi có cơ chế mang nó đi — Managed thì dirty checking
+lo (không cần save), Detached thì chỉ có save (merge) mới mang được; flush chạy trước,
+commit sau. Sơ đồ cơ chế ở [Flow](flow.md).
+
+**Cascade:** danh sách thao tác được phép lan từ thằng mang cascade sang thằng được tham
+chiếu; chỉ đặt ở quan hệ cha–con thật; orphanRemoval không phải CascadeType (kích hoạt
+khi con bị gỡ khỏi collection). Luồng lan ở [Flow](flow.md).
+
+**Thành phần và trách nhiệm** (EntityManager, Persistence Context, proxy, Session,
+Transaction, SimpleJpaRepository, HikariCP) ở [Thành phần](classes.md).
+
+Còn thiếu (chưa chốt hoặc chưa kiểm chứng): khung 4 việc của EntityManager, merge vs
+persist chi tiết, find vs getReference, Persistence Context lưu trữ chi tiết, bài chạy
+thật (dự đoán đã xác nhận, chưa chạy). Các phần trên sẽ điền khi chốt.
 
 ## Ví dụ từ project study
 

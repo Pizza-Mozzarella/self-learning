@@ -2,6 +2,7 @@
 
 20 thay đổi gần nhất có ý nghĩa, mới nhất trước.
 
+- 2026-10-30: Gom 3 mục đã chốt (vòng đời, cascade, thay đổi xuống DB bằng cơ chế nào) vào note 03 — structure/flow/classes đã có nội dung, hub cập nhật Deep dives thu gọn; vẫn draft vì bài chạy thật chưa chạy và còn phần chưa chốt (4 việc EM, merge vs persist, find vs getReference).
 - 2026-10-29: Thêm HUONG-DAN.md (hướng dẫn sử dụng repo, viết theo luật tổng quát: quy tắc dạng chung, nhánh JPA chỉ làm ví dụ).
 - 2026-10-29: Hub 01/03 chuyển sang mẫu mới (Purpose/Core idea/Mental model/Structure map/Deep dives/Ví dụ/Key takeaways), giữ nguyên nội dung; từ nay giữ hướng mẫu mới luôn, không quay lại mẫu cũ.
 - 2026-10-29: Ảnh user import dời vào folder `resources/` của nhánh (không để lẫn với file .md).

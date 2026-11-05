@@ -9,7 +9,8 @@ const STATUS = ["stub", "draft", "ok"];
 const SLUG = /^[a-z0-9]+(-[a-z0-9]+)*\.md$/;
 
 const [cmd, rootArg] = process.argv.slice(2);
-const root = path.resolve(rootArg || path.join(__dirname, ".."));
+const NEW_CMDS = ["new", "term", "ok", "ship"];
+const root = path.resolve(NEW_CMDS.includes(cmd) ? path.join(__dirname, "..") : rootArg || path.join(__dirname, ".."));
 const notesDir = path.join(root, "notes");
 const rel = (p) => path.relative(root, p).split(path.sep).join("/");
 const mapLib = require("./map");
@@ -92,12 +93,13 @@ function buildIndex() {
     for (const seg of path.relative(notesDir, path.dirname(g)).split(path.sep).filter(Boolean)) {
       node = node.dirs[seg] ||= { dirs: {}, notes: [], rel: [...(node.rel || []), seg] };
     }
-    node.gloss = { f: g, count: (fs.readFileSync(g, "utf8").match(/^### /gm) || []).length };
+    const gt = fs.readFileSync(g, "utf8");
+    node.gloss = { f: g, count: (gt.match(/^### /gm) || []).length, drafts: (gt.match(/[*][(]draft[)][*]/g) || []).length };
   }
   const out = ["# Index", "", "_Tự sinh bằng `node tools/notes.js index`, đừng sửa tay._", ""];
   const render = (node, depth) => {
     const pad = "  ".repeat(depth);
-    if (node.gloss) out.push(`${pad}- [Thuật ngữ](${rel(node.gloss.f)}) — ${node.gloss.count} mục`);
+    if (node.gloss) out.push(`${pad}- [Thuật ngữ](${rel(node.gloss.f)}) — ${node.gloss.count} mục, ${node.gloss.count - node.gloss.drafts} đã chốt`);
     for (const { f, meta } of node.notes) {
       const link = `[${meta.title || path.basename(f)}](${rel(f)})`;
       if (meta.status === "stub") { out.push(`${pad}- ${link} *(stub)* — ${meta._question}`); continue; }
@@ -194,6 +196,8 @@ function check() {
 if (cmd === "index") {
   fs.writeFileSync(path.join(root, "INDEX.md"), buildIndex(), "utf8");
   console.log("INDEX.md đã cập nhật");
+} else if (NEW_CMDS.includes(cmd)) {
+  require("./cmds")[cmd](root, process.argv.slice(3));
 } else if (cmd === "map") {
   let n = 0;
   for (const [readme, text] of mapLib.buildReadmes(mapContext())) {
@@ -203,6 +207,6 @@ if (cmd === "index") {
 } else if (cmd === "check") {
   check();
 } else {
-  console.log("Dùng: node tools/notes.js index|map|check [root]");
+  console.log('Dùng: node tools/notes.js index|map|check | new <dir> "<Tiêu đề>" "<Một câu>" [--tags --base --deeper --side] | term <chủ-đề> "<Tên>" "<định nghĩa>" | ok <đường-dẫn>[#neo] | ship "<commit>"');
   process.exit(2);
 }

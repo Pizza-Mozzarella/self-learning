@@ -96,6 +96,20 @@ node tools/notes.js check    # kiểm tra, 0 lỗi mới được commit
 
 `check` kiểm tra: tên file, frontmatter, "Một câu" (hoặc "Câu hỏi" với stub), link không hỏng, README thư mục đã liệt kê đủ note, `INDEX.md` và sơ đồ không bị cũ, không có vòng Nền/Sâu hơn. Workflow GitHub cũng chạy `check` mỗi lần push.
 
+## Lệnh nhanh
+
+```bash
+node tools/notes.js new backend/jpa/concepts "Merge Semantics" "Câu chốt." --tags jpa --base backend/jpa/concepts/entity-manager.md
+node tools/notes.js term backend/jpa "Snapshot" "Một dòng giải thích."
+node tools/notes.js ok backend/jpa/glossary#managed
+node tools/notes.js ship "Mô tả thay đổi"
+```
+
+- `new`: tạo note từ template, thêm vào README của thư mục, chạy `map` và `index`. `--base`, `--deeper`, `--side` nhận đường dẫn note tính từ `notes/` (có thể bỏ `.md`).
+- `term`: thêm một thuật ngữ vào `glossary.md` của chủ đề, mặc định ở trạng thái `*(draft)*`.
+- `ok`: chốt một thuật ngữ (bỏ `*(draft)*`) hoặc một note (`status: ok`).
+- `ship`: chạy `map`, `index`, `check`; nếu 0 lỗi thì commit và push lên nhánh đang đứng.
+
 ## Làm việc với git
 
 - Một note là một commit.

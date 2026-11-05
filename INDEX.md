@@ -12,7 +12,7 @@ _Tự sinh bằng `node tools/notes.js index`, đừng sửa tay._
   - **[flow/](notes/backend/flow/README.md)**
     - [Save Entity](notes/backend/flow/save-entity.md) — Một lệnh lưu đi qua các tầng Service → Repository → SimpleJpaRepository → EntityManager → Hibernate → JDBC Driver → PostgreSQL rồi quay ngược lại. *(draft)*
   - **jpa/**
-    - [Thuật ngữ](notes/backend/jpa/glossary.md) — 16 mục
+    - [Thuật ngữ](notes/backend/jpa/glossary.md) — 16 mục, 0 đã chốt
     - **[architecture/](notes/backend/jpa/architecture/README.md)**
       - [Entity Manager Containment](notes/backend/jpa/architecture/entity-manager-containment.md) — Transaction chứa EntityManager, EntityManager chứa Persistence Context, cha chết thì con chết theo. *(draft)*
     - **[concepts/](notes/backend/jpa/concepts/README.md)**

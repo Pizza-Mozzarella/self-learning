@@ -34,3 +34,5 @@ Luồng chạy chỉ trong phạm vi JPA. Thứ tự đọc:
 3. [Cascade Propagation](cascade-propagation.md): thao tác lan từ cha sang con
 
 Xem thêm: [concepts](../concepts/README.md) · [architecture](../architecture/README.md) · [một lệnh lưu đi qua các tầng](../../flow/README.md)
+
+Thuật ngữ: [glossary](../glossary.md)

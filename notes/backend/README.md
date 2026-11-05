@@ -20,7 +20,7 @@ flowchart TD
     d0 --> d5
     d6["architecture/<br/>1 note"]
     d5 --> d6
-    d7["concepts/<br/>7 note"]
+    d7["concepts/<br/>10 note"]
     d5 --> d7
     d8["flow/<br/>3 note"]
     d5 --> d8

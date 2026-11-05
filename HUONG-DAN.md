@@ -9,6 +9,7 @@ Kho ghi chú tự học Java/Spring/backend. Mỗi note là **một ý nguyên t
 | Xem cả cây, mỗi note kèm câu chốt | [INDEX.md](INDEX.md) |
 | Xem cây thư mục và số note | [notes/README.md](notes/README.md) |
 | Xem quan hệ giữa các note của một thư mục | `README.md` trong thư mục đó (có sơ đồ) |
+| Tra một thuật ngữ | `glossary.md` trong thư mục chủ đề (ví dụ [JPA](notes/backend/jpa/glossary.md)) |
 | Xem câu hỏi đang treo | [inbox/questions.md](inbox/questions.md) |
 
 Mẹo: mở thư mục repo bằng Obsidian (Open folder as vault) để duyệt cây gập mở và xem Graph view.
@@ -41,7 +42,6 @@ verified: no
 ---
 **Một câu:** câu chốt bằng lời của mình, tổng quát, một ý.
 
-## Ghi chú nhanh      (tuỳ chọn, tối đa 3 dòng)
 ## Ví dụ              (tuỳ chọn, ngắn)
 ## Liên kết
 - **Nền:** note cần biết trước
@@ -54,6 +54,18 @@ verified: no
 - `status`: `stub` (mới có tên và một câu hỏi, chưa học), `draft` (đã viết, chưa chốt), `ok` (đã chốt).
 - `verified`: `no`, hoặc `yes <link tới code/commit>` khi đã kiểm chứng bằng code chạy.
 - Một note stub có dòng `**Câu hỏi:**` thay cho "Một câu".
+- Mỗi khẳng định riêng là một note riêng. Không gộp nhiều ý thành gạch đầu dòng trong một note.
+
+## Thuật ngữ (glossary)
+
+Thuật ngữ nguyên tử (Managed, Dirty checking...) không phải note mà là một mục trong `glossary.md` của chủ đề:
+
+```markdown
+### Dirty checking
+Lúc flush, so từng entity Managed với bản chụp lúc nạp; entity nào khác thì sinh UPDATE.
+```
+
+Từ "Một câu" của note, link tới mục đó bằng `[dirty checking](../glossary.md#dirty-checking)`. Thuật ngữ không xuất hiện trong sơ đồ. `check` kiểm tra link neo `#...` có trỏ đúng một mục, và không có mục trùng hoặc rỗng.
 
 ## Đọc sơ đồ
 

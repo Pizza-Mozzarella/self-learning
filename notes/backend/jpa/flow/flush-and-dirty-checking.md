@@ -4,7 +4,7 @@ tags: [jpa, entity-manager, flow]
 status: draft
 verified: no
 ---
-**Một câu:** Thay đổi trên entity chỉ xuống DB khi có cơ chế mang nó đi: Managed thì dirty checking lo, Detached thì chỉ save (merge) mới mang được.
+**Một câu:** Thay đổi trên entity chỉ xuống DB khi có cơ chế mang nó đi: [Managed](../glossary.md#managed) thì [dirty checking](../glossary.md#dirty-checking) lo, [Detached](../glossary.md#detached) thì chỉ [save](../glossary.md#merge) (merge) mới mang được.
 
 ```mermaid
 flowchart TD

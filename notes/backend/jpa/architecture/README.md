@@ -20,3 +20,5 @@ _Chú thích: mũi tên A → B: B là phần con hoặc chi tiết của A · �
 1. [Entity Manager Containment](entity-manager-containment.md) — ai chứa ai, ai target ai
 
 Xem thêm: [concepts](../concepts/README.md) · [flow](../flow/README.md)
+
+Thuật ngữ: [glossary](../glossary.md)

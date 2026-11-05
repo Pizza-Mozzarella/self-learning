@@ -4,7 +4,7 @@ tags: [jpa, entity-manager, flow]
 status: draft
 verified: no
 ---
-**Một câu:** Vòng đời của entity là quan hệ của nó với Persistence Context, không phải trạng thái của row trong DB.
+**Một câu:** Vòng đời của entity là quan hệ của nó với [Persistence Context](../glossary.md#persistence-context), không phải trạng thái của row trong DB.
 
 ```mermaid
 stateDiagram-v2

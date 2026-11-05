@@ -12,20 +12,24 @@ _Tự sinh bằng `node tools/notes.js index`, đừng sửa tay._
   - **[flow/](notes/backend/flow/README.md)**
     - [Save Entity](notes/backend/flow/save-entity.md) — Một lệnh lưu đi qua các tầng Service → Repository → SimpleJpaRepository → EntityManager → Hibernate → JDBC Driver → PostgreSQL rồi quay ngược lại. *(draft)*
   - **jpa/**
+    - [Thuật ngữ](notes/backend/jpa/glossary.md) — 16 mục
     - **[architecture/](notes/backend/jpa/architecture/README.md)**
       - [Entity Manager Containment](notes/backend/jpa/architecture/entity-manager-containment.md) — Transaction chứa EntityManager, EntityManager chứa Persistence Context, cha chết thì con chết theo. *(draft)*
     - **[concepts/](notes/backend/jpa/concepts/README.md)**
+      - [Cascade Parent-Child Only](notes/backend/jpa/concepts/cascade-parent-child-only.md) — Chỉ đặt cascade ở quan hệ cha–con thật (bài kiểm tra: xóa cha thì con có nên biến mất theo không). *(draft)*
       - [Cascade](notes/backend/jpa/concepts/cascade.md) — Cascade là danh sách thao tác được phép lan từ entity mang annotation sang entity được tham chiếu. *(draft)*
       - [Connection](notes/backend/jpa/concepts/connection.md) *(stub)* — Connection là gì, ai cấp nó (HikariCP), và vì sao transaction mượn rồi trả lại pool thay vì giữ hoài?
+      - [Entity Manager Is Not a Connection](notes/backend/jpa/concepts/entity-manager-is-not-connection.md) — EntityManager không phải connection: nó dùng connection (qua Hibernate, JDBC) để làm việc. *(draft)*
+      - [Entity Manager Is Not Thread-Safe](notes/backend/jpa/concepts/entity-manager-is-not-thread-safe.md) — EntityManager không thread-safe. *(draft)*
       - [Entity Manager](notes/backend/jpa/concepts/entity-manager.md) — EntityManager là object trung tâm của JPA để quản lý entity (persist, find, merge, remove, query). *(draft)*
       - [Entity to Row](notes/backend/jpa/concepts/entity-to-row.md) — Bảng không bao giờ chứa object: Hibernate tháo object ra thành giá trị phẳng, tham chiếu thành id khóa ngoại, list thành bảng riêng, chỉ field đơn mới thành cột. *(draft)*
       - [Orphan Removal](notes/backend/jpa/concepts/orphan-removal.md) — orphanRemoval không phải CascadeType: nó kích hoạt khi con bị gỡ khỏi collection, còn REMOVE kích hoạt khi remove cha. *(draft)*
-      - [Persistence Context](notes/backend/jpa/concepts/persistence-context.md) — Persistence Context là bộ nhớ đệm các entity đang Managed, do EntityManager giữ. *(draft)*
-      - [Shared Entity Manager](notes/backend/jpa/concepts/shared-entity-manager.md) — Thứ ta cầm trong Spring không phải EntityManager thật mà là một shared proxy, chuyển tiếp tới Session của transaction hiện tại. *(draft)*
+      - [Persistence Context](notes/backend/jpa/concepts/persistence-context.md) — Persistence Context là bộ nhớ đệm các entity đang [Managed](../glossary.md#managed), do EntityManager giữ. *(draft)*
+      - [Shared Entity Manager](notes/backend/jpa/concepts/shared-entity-manager.md) — Thứ ta cầm trong Spring không phải EntityManager thật mà là một [shared proxy](../glossary.md#shared-proxy), chuyển tiếp tới [Session](../glossary.md#session) của transaction hiện tại. *(draft)*
     - **[flow/](notes/backend/jpa/flow/README.md)**
       - [Cascade Propagation](notes/backend/jpa/flow/cascade-propagation.md) — Thao tác nào có trong danh sách cascade thì lan từ cha sang con khi thực hiện trên cha. *(draft)*
-      - [Entity Lifecycle](notes/backend/jpa/flow/entity-lifecycle.md) — Vòng đời của entity là quan hệ của nó với Persistence Context, không phải trạng thái của row trong DB. *(draft)*
-      - [Flush and Dirty Checking](notes/backend/jpa/flow/flush-and-dirty-checking.md) — Thay đổi trên entity chỉ xuống DB khi có cơ chế mang nó đi: Managed thì dirty checking lo, Detached thì chỉ save (merge) mới mang được. *(draft)*
+      - [Entity Lifecycle](notes/backend/jpa/flow/entity-lifecycle.md) — Vòng đời của entity là quan hệ của nó với [Persistence Context](../glossary.md#persistence-context), không phải trạng thái của row trong DB. *(draft)*
+      - [Flush and Dirty Checking](notes/backend/jpa/flow/flush-and-dirty-checking.md) — Thay đổi trên entity chỉ xuống DB khi có cơ chế mang nó đi: [Managed](../glossary.md#managed) thì [dirty checking](../glossary.md#dirty-checking) lo, [Detached](../glossary.md#detached) thì chỉ [save](../glossary.md#merge) (merge) mới mang được. *(draft)*
   - **spring/**
     - **data/**
       - **jpa/**

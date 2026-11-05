@@ -32,9 +32,31 @@ function walk(dir, out = []) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
     const p = path.join(dir, e.name);
     if (e.isDirectory()) walk(p, out);
-    else if (e.name.endsWith(".md") && e.name !== "README.md") out.push(p);
+    else if (e.name.endsWith(".md") && e.name !== "README.md" && e.name !== "glossary.md") out.push(p);
   }
   return out;
+}
+
+// glossary.md là catalog thuật ngữ của một chủ đề: không phải note, mỗi thuật ngữ là một mục "### Tên".
+function glossaries(dir, out = []) {
+  if (!fs.existsSync(dir)) return out;
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    const p = path.join(dir, e.name);
+    if (e.isDirectory()) glossaries(p, out);
+    else if (e.name === "glossary.md") out.push(p);
+  }
+  return out.sort();
+}
+
+const slug = (h) => h.trim().toLowerCase().replace(/[^\p{L}\p{N}\s-]/gu, "").replace(/\s+/g, "-");
+const anchorCache = new Map();
+function anchorsOf(file) {
+  if (!anchorCache.has(file)) {
+    const set = new Set();
+    for (const m of fs.readFileSync(file, "utf8").matchAll(/^#{1,6}\s+(.+)$/gm)) set.add(slug(m[1]));
+    anchorCache.set(file, set);
+  }
+  return anchorCache.get(file);
 }
 
 function parse(file) {
@@ -65,9 +87,17 @@ function buildIndex() {
     }
     node.notes.push({ f, meta: n.meta });
   }
+  for (const g of glossaries(notesDir)) {
+    let node = tree;
+    for (const seg of path.relative(notesDir, path.dirname(g)).split(path.sep).filter(Boolean)) {
+      node = node.dirs[seg] ||= { dirs: {}, notes: [], rel: [...(node.rel || []), seg] };
+    }
+    node.gloss = { f: g, count: (fs.readFileSync(g, "utf8").match(/^### /gm) || []).length };
+  }
   const out = ["# Index", "", "_Tự sinh bằng `node tools/notes.js index`, đừng sửa tay._", ""];
   const render = (node, depth) => {
     const pad = "  ".repeat(depth);
+    if (node.gloss) out.push(`${pad}- [Thuật ngữ](${rel(node.gloss.f)}) — ${node.gloss.count} mục`);
     for (const { f, meta } of node.notes) {
       const link = `[${meta.title || path.basename(f)}](${rel(f)})`;
       if (meta.status === "stub") { out.push(`${pad}- ${link} *(stub)* — ${meta._question}`); continue; }
@@ -110,9 +140,21 @@ function check() {
       warnings.push(`${name}: 'Một câu' có chữ 'và', cân nhắc tách thành hai note`);
     }
     for (const m of body.matchAll(/\]\(([^)\s]+)\)/g)) {
-      const href = m[1].split("#")[0];
+      const [href, frag] = m[1].split("#");
       if (!href || /^(https?:|mailto:)/.test(href)) continue;
-      if (!fs.existsSync(path.resolve(path.dirname(f), href))) errors.push(`${name}: link hỏng -> ${m[1]}`);
+      const target = path.resolve(path.dirname(f), href);
+      if (!fs.existsSync(target)) errors.push(`${name}: link hỏng -> ${m[1]}`);
+      else if (frag && href.endsWith(".md") && !anchorsOf(target).has(frag)) errors.push(`${name}: neo không có trong file đích -> ${m[1]}`);
+    }
+  }
+  for (const g of glossaries(notesDir)) {
+    const seen = new Set();
+    const text = fs.readFileSync(g, "utf8").replace(/\r\n/g, "\n");
+    for (const sec of text.split(/^### /m).slice(1)) {
+      const [title, ...rest] = sec.split("\n");
+      if (seen.has(slug(title))) errors.push(`${rel(g)}: trùng thuật ngữ '${title.trim()}'`);
+      seen.add(slug(title));
+      if (!rest.join("").trim()) errors.push(`${rel(g)}: thuật ngữ '${title.trim()}' chưa có giải thích`);
     }
   }
   for (const [dir, list] of dirs) {

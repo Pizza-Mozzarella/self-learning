@@ -1,7 +1,13 @@
 # Java Core: concepts
 
-Kiến thức nền của Java, chưa dính framework. Đọc theo thứ tự:
+Kiến thức nền của Java, chưa dính framework.
 
-1. [Interface](interface.md) — stub
-2. [Instance](instance.md) — stub
-3. [Polymorphism](polymorphism.md) — draft
+```mermaid
+flowchart LR
+    I[Interface] --> P[Polymorphism]
+    O[Instance] --> P
+```
+
+1. [Interface](interface.md): stub
+2. [Instance](instance.md): stub
+3. [Polymorphism](polymorphism.md)

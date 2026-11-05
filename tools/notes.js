@@ -1,5 +1,5 @@
 // Công cụ cho notes/ (thư mục lồng nhau). Chỉ cần Node, không cài gì thêm.
-//   node tools/notes.js index [root]   sinh INDEX.md từ frontmatter
+//   node tools/notes.js index [root]   sinh INDEX.md (cây theo thư mục) từ frontmatter
 //   node tools/notes.js check [root]   kiểm tra format, link, README từng thư mục, INDEX (lỗi -> exit 1)
 const fs = require("fs");
 const path = require("path");
@@ -32,30 +32,44 @@ function parse(file) {
     const i = line.indexOf(":");
     if (i > 0) meta[line.slice(0, i).trim()] = line.slice(i + 1).trim();
   }
-  const grab = (label) => (m[2].match(new RegExp(`^\\*\\*${label}:\\*\\*[ \\t]*(.*)$`, "m")) || [])[1]?.trim() || "";
+  const grab = (label) => (m[2].match(new RegExp(`^[*][*]${label}:[*][*](.*)$`, "m")) || [])[1]?.trim() || "";
   meta._one = grab("Một câu");
   meta._question = grab("Câu hỏi");
   meta._tags = (meta.tags || "").replace(/^\[|\]$/g, "").split(",").map((t) => t.trim()).filter(Boolean);
   return { meta, body: m[2] };
 }
 
+// INDEX.md là cây theo thư mục, giống hình cây ta nhớ trong đầu.
 function buildIndex() {
-  const groups = {}, stubs = [];
+  const tree = { dirs: {}, notes: [] };
   for (const f of walk(notesDir)) {
     const n = parse(f);
     if (!n) continue;
-    const { meta } = n;
-    const link = `[${meta.title || path.basename(f)}](${rel(f)})`;
-    if (meta.status === "stub") { stubs.push(`- ${link} — ${meta._question}`); continue; }
-    let mark = meta.status === "ok" ? "" : " *(draft)*";
-    if ((meta.verified || "").startsWith("yes")) mark += " ✔";
-    for (const tag of meta._tags.length ? meta._tags : ["no-tag"]) (groups[tag] ||= []).push(`- ${link} — ${meta._one}${mark}`);
+    let node = tree;
+    for (const seg of path.relative(notesDir, path.dirname(f)).split(path.sep).filter(Boolean)) {
+      node = node.dirs[seg] ||= { dirs: {}, notes: [], rel: [...(node.rel || []), seg] };
+    }
+    node.notes.push({ f, meta: n.meta });
   }
   const out = ["# Index", "", "_Tự sinh bằng `node tools/notes.js index`, đừng sửa tay._", ""];
-  const tags = Object.keys(groups).sort();
-  if (!tags.length && !stubs.length) out.push("(chưa có note)");
-  for (const t of tags) out.push(`## ${t}`, "", ...groups[t], "");
-  if (stubs.length) out.push("## Chưa khám phá (stub)", "", ...stubs, "");
+  const render = (node, depth) => {
+    const pad = "  ".repeat(depth);
+    for (const { f, meta } of node.notes) {
+      const link = `[${meta.title || path.basename(f)}](${rel(f)})`;
+      if (meta.status === "stub") { out.push(`${pad}- ${link} *(stub)* — ${meta._question}`); continue; }
+      let mark = meta.status === "ok" ? "" : " *(draft)*";
+      if ((meta.verified || "").startsWith("yes")) mark += " ✔";
+      out.push(`${pad}- ${link} — ${meta._one}${mark}`);
+    }
+    for (const d of Object.keys(node.dirs).sort()) {
+      const sub = node.dirs[d];
+      const readme = path.join(notesDir, ...sub.rel, "README.md");
+      out.push(`${pad}- **${fs.existsSync(readme) ? `[${d}/](${rel(readme)})` : `${d}/`}**`);
+      render(sub, depth + 1);
+    }
+  };
+  render(tree, 0);
+  if (!tree.notes.length && !Object.keys(tree.dirs).length) out.push("(chưa có note)");
   return out.join("\n").trimEnd() + "\n";
 }
 
@@ -93,6 +107,16 @@ function check() {
     const text = fs.readFileSync(readme, "utf8");
     const linked = new Set([...text.matchAll(/\]\(([^)\s]+)\)/g)].map((m) => path.resolve(dir, m[1].split("#")[0])));
     for (const f of list) if (!linked.has(f)) errors.push(`${rel(readme)}: chưa liệt kê ${path.basename(f)}`);
+  }
+  // link trong mọi README phải trỏ tới file có thật
+  for (const readme of [...dirs.keys()].map((d) => path.join(d, "README.md")).concat(
+    ["README.md", "backend/README.md"].map((r) => path.join(notesDir, r)))) {
+    if (!fs.existsSync(readme)) continue;
+    for (const m of fs.readFileSync(readme, "utf8").matchAll(/\]\(([^)\s]+)\)/g)) {
+      const href = m[1].split("#")[0];
+      if (!href || /^(https?:|mailto:)/.test(href)) continue;
+      if (!fs.existsSync(path.resolve(path.dirname(readme), href))) errors.push(`${rel(readme)}: link hỏng -> ${m[1]}`);
+    }
   }
   const idx = path.join(root, "INDEX.md");
   const cur = fs.existsSync(idx) ? fs.readFileSync(idx, "utf8").replace(/\r\n/g, "\n") : null;

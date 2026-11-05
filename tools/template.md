@@ -6,11 +6,11 @@ verified: no
 ---
 **Một câu:** <câu chốt bằng lời của mình, tổng quát, một ý>
 
-## Giải thích
-<3–6 dòng tiếng Việt, viết cho người chưa biết gì cũng hiểu; lần đầu nhắc thuật ngữ thì kèm tên Anh>
+## Ghi chú nhanh
+<tuỳ chọn, tối đa 3 gạch đầu dòng; kèm tên Anh của thuật ngữ nếu cần>
 
 ## Ví dụ
-<trường hợp cụ thể: code tối thiểu hoặc sơ đồ Mermaid>
+<tuỳ chọn, ngắn: một dòng hoặc code tối thiểu>
 
 ## Liên kết
 - **Nền:** [tên](../path/slug.md)

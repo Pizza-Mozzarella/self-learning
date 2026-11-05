@@ -12,5 +12,4 @@ verified: no
 
 ## Liên kết
 - **Nền:** [Repository](repository.md)
-- **Bên cạnh:** [Repository Proxy](repository-proxy.md)
 - **Cấu trúc:** [Repository Hierarchy](../architecture/repository-hierarchy.md)

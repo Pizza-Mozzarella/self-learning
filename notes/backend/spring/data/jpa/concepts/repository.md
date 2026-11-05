@@ -10,6 +10,6 @@ verified: no
 `OrderRepository` kế thừa save/findById từ `JpaRepository`, findAll(Spec) từ `JpaSpecificationExecutor`, tự khai báo `findWithDetailsById`.
 
 ## Liên kết
-- **Sâu hơn:** [SimpleJpaRepository](simple-jpa-repository.md) · [Repository Proxy](repository-proxy.md) · [Query Executor](query-executor.md)
+- **Sâu hơn:** [Repository Proxy](repository-proxy.md)
 - **Bên cạnh:** [JpaSpecificationExecutor](jpa-specification-executor.md)
 - **Cấu trúc:** [Repository Hierarchy](../architecture/repository-hierarchy.md) · **Flow:** [Repository Bootstrap](../../../flow/repository-bootstrap.md)

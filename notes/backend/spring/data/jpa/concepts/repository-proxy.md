@@ -11,4 +11,4 @@ verified: no
 
 ## Liên kết
 - **Nền:** [Repository](repository.md) · [Polymorphism](../../../../../java/core/concepts/polymorphism.md)
-- **Sâu hơn:** [Repository Dispatch](../flow/repository-dispatch.md)
+- **Sâu hơn:** [SimpleJpaRepository](simple-jpa-repository.md) · [Query Executor](query-executor.md) · [Repository Dispatch](../flow/repository-dispatch.md)

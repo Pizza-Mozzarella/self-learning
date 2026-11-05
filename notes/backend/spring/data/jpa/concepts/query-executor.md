@@ -12,4 +12,3 @@ verified: no
 
 ## Liên kết
 - **Nền:** [Repository Proxy](repository-proxy.md)
-- **Sâu hơn:** [Repository Dispatch](../flow/repository-dispatch.md)

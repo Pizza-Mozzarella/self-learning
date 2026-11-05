@@ -14,13 +14,11 @@ flowchart TD
     n6["Repository Dispatch<br/>(jpa/flow)"]:::ext
     n7["Polymorphism<br/>(core/concepts)"]:::ext
     n5 --> n4
-    n1 --> n6
+    n2 --> n4
+    n2 --> n1
     n2 --> n6
-    n3 --> n4
     n3 --> n2
-    n3 --> n1
     n3 -.- n0
-    n4 -.- n2
     n7 -.- n2
     classDef stub fill:#eeeeee,stroke:#999999,stroke-dasharray:4 3,color:#555555
     classDef draft fill:#fff4cc,stroke:#c9a227,color:#333333

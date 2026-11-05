@@ -6,8 +6,9 @@ verified: no
 ---
 **Một câu:** SimpleJpaRepository là class viết sẵn làm việc thật cho các method chuẩn của repository.
 
-## Giải thích
-Nó implements `JpaRepositoryImplementation`. Nó giữ một `EntityManager` qua constructor (nó giữ EntityManager, EntityManager không biết nó tồn tại). Nó chỉ được `new` bởi `JpaRepositoryFactory`, không phải bean và không bao giờ được inject: Spring chỉ biết tới [proxy](repository-proxy.md), còn Simple nằm bên trong proxy làm target.
+## Ghi chú nhanh
+- Giữ một `EntityManager` qua constructor.
+- Chỉ được `new` bởi `JpaRepositoryFactory`: không phải bean, không được inject.
 
 ## Liên kết
 - **Nền:** [Repository](repository.md)

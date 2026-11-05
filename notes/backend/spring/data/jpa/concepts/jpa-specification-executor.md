@@ -6,9 +6,6 @@ verified: no
 ---
 **Một câu:** JpaRepository 4.x không kèm Specification; muốn lọc động thì phải extends thêm JpaSpecificationExecutor.
 
-## Giải thích
-`JpaSpecificationExecutor` đứng riêng ngoài cây `JpaRepository`. `JpaRepositoryImplementation` mới gom cả hai, và `SimpleJpaRepository` implements interface đó.
-
 ## Ví dụ
 `OrderRepository extends JpaRepository<Order, Long>, JpaSpecificationExecutor<Order>`.
 

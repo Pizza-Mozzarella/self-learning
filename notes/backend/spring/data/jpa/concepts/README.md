@@ -1,15 +1,44 @@
 # Spring Data JPA: concepts
 
-Cần biết trước: [Polymorphism](../../../../../java/core/concepts/polymorphism.md).
+<!-- map:start -->
+_Sơ đồ tự sinh từ link trong các note, đừng sửa tay: `node tools/notes.js map`._
 
 ```mermaid
 flowchart TD
-    R[Repository] --> P[Repository Proxy]
-    R --> S[SimpleJpaRepository]
-    P -->|target| S
-    P -->|target| Q[Query Executor]
-    R -.-> J[JpaSpecificationExecutor]
+    n0["JpaSpecificationExecutor"]:::draft
+    n1["Query Executor"]:::draft
+    n2["Repository Proxy"]:::draft
+    n3["Repository"]:::draft
+    n4["SimpleJpaRepository"]:::draft
+    n5["Shared Entity Manager<br/>(jpa/concepts)"]:::ext
+    n6["Repository Hierarchy<br/>(jpa/architecture)"]:::ext
+    n7["Repository Dispatch<br/>(jpa/flow)"]:::ext
+    n8["Repository Bootstrap<br/>(spring/flow)"]:::ext
+    n9["Polymorphism<br/>(core/concepts)"]:::ext
+    n2 --> n5
+    n3 --> n6
+    n6 --> n4
+    n3 --> n0
+    n2 --> n1
+    n1 --> n7
+    n3 --> n2
+    n9 --> n2
+    n2 --> n7
+    n3 --> n4
+    n3 --> n1
+    n3 -.- n0
+    n4 -.- n2
+    n4 --> n7
+    n2 --> n8
+    n9 -.- n2
+    classDef stub fill:#eeeeee,stroke:#999999,stroke-dasharray:4 3,color:#555555
+    classDef draft fill:#fff4cc,stroke:#c9a227,color:#333333
+    classDef ok fill:#d8f0dc,stroke:#3a9d5d,color:#222222
+    classDef ext fill:#ffffff,stroke:#999999,color:#555555
 ```
+<!-- map:end -->
+
+Cần biết trước: [Polymorphism](../../../../../java/core/concepts/polymorphism.md).
 
 1. [Repository](repository.md)
 2. [SimpleJpaRepository](simple-jpa-repository.md)

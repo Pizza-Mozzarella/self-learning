@@ -57,12 +57,12 @@ verified: no
 
 ## Đọc sơ đồ
 
-Sơ đồ trong README mỗi thư mục **tự sinh từ các link** "Liên kết" của note, không vẽ tay.
+Sơ đồ trong README mỗi thư mục chỉ vẽ **cấu trúc**, tự sinh từ các link "Liên kết" của note, không vẽ tay. Link **Nền** (thứ tự học) không được vẽ, nó chỉ nằm trong note.
 
 | Hình | Nghĩa |
 |---|---|
-| Mũi tên A → B | học A trước, B là phần nối tiếp hoặc đào sâu của A |
-| Nét đứt A - - B | liên quan ngang cấp, không có thứ tự |
+| Mũi tên A → B | B là phần con hoặc chi tiết của A (từ link "Sâu hơn" của A) |
+| Nét đứt A - - B | liên quan ngang cấp, không có thứ tự (từ link "Bên cạnh") |
 | Ô vàng | draft |
 | Ô xám nét đứt | stub |
 | Ô xanh | ok |

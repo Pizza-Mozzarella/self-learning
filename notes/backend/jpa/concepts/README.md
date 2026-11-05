@@ -16,33 +16,23 @@ flowchart TD
     n8["Entity Manager Containment<br/>(jpa/architecture)"]:::ext
     n9["Cascade Propagation<br/>(jpa/flow)"]:::ext
     n10["Entity Lifecycle<br/>(jpa/flow)"]:::ext
-    n11["Flush and Dirty Checking<br/>(jpa/flow)"]:::ext
-    n12["Repository Proxy<br/>(jpa/concepts)"]:::ext
-    n3 --> n7
-    n2 --> n7
-    n2 --> n8
-    n5 --> n8
-    n2 --> n0
     n0 --> n9
     n0 -.- n4
-    n2 --> n1
-    n3 --> n2
     n2 --> n5
     n2 --> n6
     n2 -.- n1
+    n3 --> n7
     n3 -.- n2
-    n0 --> n4
     n5 --> n10
-    n12 --> n6
+    n5 --> n8
     n9 -.- n4
-    n5 --> n11
     classDef stub fill:#eeeeee,stroke:#999999,stroke-dasharray:4 3,color:#555555
     classDef draft fill:#fff4cc,stroke:#c9a227,color:#333333
     classDef ok fill:#d8f0dc,stroke:#3a9d5d,color:#222222
     classDef ext fill:#ffffff,stroke:#999999,color:#555555
 ```
 
-_Chú thích: mũi tên A → B: học A trước, B nối tiếp hoặc đào sâu của A · nét đứt: liên quan ngang cấp, không có thứ tự · ô vàng: draft (đã viết, chưa chốt) · ô xám nét đứt: stub (chưa học) · ô viền nhạt: note ở thư mục khác._
+_Chú thích: mũi tên A → B: B là phần con hoặc chi tiết của A · nét đứt: liên quan ngang cấp, không có thứ tự · ô vàng: draft (đã viết, chưa chốt) · ô xám nét đứt: stub (chưa học) · ô viền nhạt: note ở thư mục khác._
 <!-- map:end -->
 
 Cần biết trước: [Polymorphism](../../../java/core/concepts/polymorphism.md).

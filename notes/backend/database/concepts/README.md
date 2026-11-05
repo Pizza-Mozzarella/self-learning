@@ -14,7 +14,7 @@ flowchart TD
     classDef ext fill:#ffffff,stroke:#999999,color:#555555
 ```
 
-_Chú thích: mũi tên A → B: học A trước, B nối tiếp hoặc đào sâu của A · ô vàng: draft (đã viết, chưa chốt)._
+_Chú thích: mũi tên A → B: B là phần con hoặc chi tiết của A · ô vàng: draft (đã viết, chưa chốt)._
 <!-- map:end -->
 
 1. [Schema](schema.md)

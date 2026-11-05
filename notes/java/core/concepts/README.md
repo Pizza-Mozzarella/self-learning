@@ -9,7 +9,6 @@ flowchart TD
     n1["Interface"]:::stub
     n2["Polymorphism"]:::draft
     n3["Repository Proxy<br/>(jpa/concepts)"]:::ext
-    n2 --> n3
     n0 --> n2
     n1 --> n2
     n2 -.- n3
@@ -19,7 +18,7 @@ flowchart TD
     classDef ext fill:#ffffff,stroke:#999999,color:#555555
 ```
 
-_Chú thích: mũi tên A → B: học A trước, B nối tiếp hoặc đào sâu của A · nét đứt: liên quan ngang cấp, không có thứ tự · ô vàng: draft (đã viết, chưa chốt) · ô xám nét đứt: stub (chưa học) · ô viền nhạt: note ở thư mục khác._
+_Chú thích: mũi tên A → B: B là phần con hoặc chi tiết của A · nét đứt: liên quan ngang cấp, không có thứ tự · ô vàng: draft (đã viết, chưa chốt) · ô xám nét đứt: stub (chưa học) · ô viền nhạt: note ở thư mục khác._
 <!-- map:end -->
 
 Kiến thức nền của Java, chưa dính framework.

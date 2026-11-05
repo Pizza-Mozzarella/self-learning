@@ -1,13 +1,51 @@
 # Notes
 
+<!-- tree:start -->
+_Cây thư mục tự sinh, đừng sửa tay: `node tools/notes.js map`._
+
 ```mermaid
-flowchart LR
-    JAVA["java/core<br/>ngôn ngữ nền"] --> BE
-    subgraph BE["backend"]
-        direction LR
-        SP["spring<br/>framework, data/jpa"] --> JPA["jpa<br/>EntityManager, Hibernate"] --> DB["database<br/>JDBC, SQL"]
-    end
+flowchart TD
+    d0["notes/"]
+    d1["backend/"]
+    d0 --> d1
+    d2["architecture/<br/>1 note"]
+    d1 --> d2
+    d3["database/"]
+    d1 --> d3
+    d4["concepts/<br/>2 note"]
+    d3 --> d4
+    d5["flow/<br/>1 note"]
+    d1 --> d5
+    d6["jpa/"]
+    d1 --> d6
+    d7["architecture/<br/>1 note"]
+    d6 --> d7
+    d8["concepts/<br/>7 note"]
+    d6 --> d8
+    d9["flow/<br/>3 note"]
+    d6 --> d9
+    d10["spring/"]
+    d1 --> d10
+    d11["data/"]
+    d10 --> d11
+    d12["jpa/"]
+    d11 --> d12
+    d13["architecture/<br/>1 note"]
+    d12 --> d13
+    d14["concepts/<br/>5 note"]
+    d12 --> d14
+    d15["flow/<br/>1 note"]
+    d12 --> d15
+    d16["flow/<br/>1 note"]
+    d10 --> d16
+    d17["java/"]
+    d0 --> d17
+    d18["core/"]
+    d17 --> d18
+    d19["concepts/<br/>3 note"]
+    d18 --> d19
 ```
+<!-- tree:end -->
 
 - [java/core](java/core/concepts/README.md)
 - [backend](backend/README.md)

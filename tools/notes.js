@@ -12,6 +12,20 @@ const [cmd, rootArg] = process.argv.slice(2);
 const root = path.resolve(rootArg || path.join(__dirname, ".."));
 const notesDir = path.join(root, "notes");
 const rel = (p) => path.relative(root, p).split(path.sep).join("/");
+const mapLib = require("./map");
+
+// Dữ kiện để vẽ sơ đồ: thông tin note, các cạnh từ link, và các README cần có sơ đồ.
+function mapContext() {
+  const info = new Map();
+  for (const f of walk(notesDir)) {
+    const n = parse(f);
+    if (n) info.set(f, { title: n.meta.title || path.basename(f), status: n.meta.status || "draft", body: n.body });
+  }
+  const hubs = [...new Set([...info.keys()].map((f) => path.dirname(f)))].map((d) => path.join(d, "README.md"));
+  const tops = ["README.md", "backend/README.md"].map((r) => path.join(notesDir, r));
+  const readmes = [...new Set([...hubs, ...tops])].filter((p) => fs.existsSync(p) && (hubs.includes(p) || fs.readFileSync(p, "utf8").includes("<!-- tree:start -->")));
+  return { notesDir, info, readmes, edges: mapLib.collectEdges(info) };
+}
 
 function walk(dir, out = []) {
   if (!fs.existsSync(dir)) return out;
@@ -121,6 +135,12 @@ function check() {
   const idx = path.join(root, "INDEX.md");
   const cur = fs.existsSync(idx) ? fs.readFileSync(idx, "utf8").replace(/\r\n/g, "\n") : null;
   if (cur !== buildIndex()) errors.push("INDEX.md cũ, chạy: node tools/notes.js index");
+  // Sơ đồ chỉ được vẽ từ dữ kiện thật: không có vòng mâu thuẫn, và README phải khớp với link hiện tại.
+  const ctx = mapContext();
+  for (const c of mapLib.findCycles(ctx.info, ctx.edges)) errors.push(`vòng Nền/Sâu hơn mâu thuẫn: ${c.map((f) => path.basename(f, ".md")).join(" -> ")}`);
+  for (const [readme, text] of mapLib.buildReadmes(ctx)) {
+    if (fs.readFileSync(readme, "utf8").replace(/\r\n/g, "\n") !== text) errors.push(`${rel(readme)}: sơ đồ cũ, chạy: node tools/notes.js map`);
+  }
   warnings.forEach((w) => console.log("CẢNH BÁO", w));
   errors.forEach((e) => console.log("LỖI", e));
   console.log(`${files.length} note, ${errors.length} lỗi, ${warnings.length} cảnh báo`);
@@ -130,9 +150,15 @@ function check() {
 if (cmd === "index") {
   fs.writeFileSync(path.join(root, "INDEX.md"), buildIndex(), "utf8");
   console.log("INDEX.md đã cập nhật");
+} else if (cmd === "map") {
+  let n = 0;
+  for (const [readme, text] of mapLib.buildReadmes(mapContext())) {
+    if (fs.readFileSync(readme, "utf8").replace(/\r\n/g, "\n") !== text) { fs.writeFileSync(readme, text, "utf8"); n++; }
+  }
+  console.log(`đã cập nhật sơ đồ ở ${n} README`);
 } else if (cmd === "check") {
   check();
 } else {
-  console.log("Dùng: node tools/notes.js index|check [root]");
+  console.log("Dùng: node tools/notes.js index|map|check [root]");
   process.exit(2);
 }

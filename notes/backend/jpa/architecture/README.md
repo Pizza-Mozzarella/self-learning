@@ -15,6 +15,8 @@ flowchart TD
     classDef ok fill:#d8f0dc,stroke:#3a9d5d,color:#222222
     classDef ext fill:#ffffff,stroke:#999999,color:#555555
 ```
+
+_Chú thích: mũi tên A → B: học A trước, B nối tiếp hoặc đào sâu của A · ô vàng: draft (đã viết, chưa chốt) · ô viền nhạt: note ở thư mục khác._
 <!-- map:end -->
 
 1. [Entity Manager Containment](entity-manager-containment.md) — ai chứa ai, ai target ai

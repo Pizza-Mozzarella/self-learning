@@ -92,6 +92,14 @@ function relationMap(dir, info, edges, notesDir) {
   }
   for (const e of rel) out.push(`    ${ids.get(e.from)} ${e.kind === "side" ? "-.-" : "-->"} ${ids.get(e.to)}`);
   out.push(...CLASSES, "```");
+  // Chú thích chỉ gồm những thứ thật sự xuất hiện trong sơ đồ này.
+  const parts = [];
+  if (rel.some((e) => e.kind === "dir")) parts.push("mũi tên A → B: học A trước, B nối tiếp hoặc đào sâu của A");
+  if (rel.some((e) => e.kind === "side")) parts.push("nét đứt: liên quan ngang cấp, không có thứ tự");
+  const named = { draft: "ô vàng: draft (đã viết, chưa chốt)", ok: "ô xanh: ok (đã chốt)", stub: "ô xám nét đứt: stub (chưa học)" };
+  for (const s of ["draft", "ok", "stub"]) if (internal.some((f) => info.get(f).status === s)) parts.push(named[s]);
+  if (ext.size) parts.push("ô viền nhạt: note ở thư mục khác");
+  out.push("", `_Chú thích: ${parts.join(" · ")}._`);
   return out.join("\n");
 }
 
@@ -113,7 +121,8 @@ function treeMap(dir, info) {
     for (const s of subdirs(d)) walk(s, id);
   };
   walk(dir, null);
-  return ["```mermaid", "flowchart TD", ...lines, "```"].join("\n");
+  const legend = [...counts.keys()].some((d) => d.startsWith(dir)) ? ["", "_Chú thích: mỗi ô là một thư mục; số note là số note nằm trực tiếp trong thư mục đó._"] : [];
+  return ["```mermaid", "flowchart TD", ...lines, "```", ...legend].join("\n");
 }
 
 const MAP_START = "<!-- map:start -->", MAP_END = "<!-- map:end -->";

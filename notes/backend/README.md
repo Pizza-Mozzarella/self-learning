@@ -39,6 +39,8 @@ flowchart TD
     d15["flow/<br/>1 note"]
     d9 --> d15
 ```
+
+_Chú thích: mỗi ô là một thư mục; số note là số note nằm trực tiếp trong thư mục đó._
 <!-- tree:end -->
 
 - Cấu trúc: [architecture](architecture/README.md)

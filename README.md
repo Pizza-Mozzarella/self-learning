@@ -1,54 +1,10 @@
-# Study Notes — Second Brain
+# Self-learning
 
-Kho ghi chú tự học: mỗi kiến thức học được → một note ngắn, kiểm chứng bằng code chạy thật, không phải lý thuyết suông.
+Kho ghi chú tự học Java/Spring/backend. Mỗi note là **một ý nguyên tử**: nói gọn được trong một câu theo ý hiểu của người học.
 
-## Cấu trúc
+- [INDEX.md](INDEX.md): mục lục (tự sinh)
+- [notes/](notes/): ghi chú, xếp theo `lĩnh vực / chủ đề / loại / note`, loại là `concepts` (là gì), `architecture` (gồm gì, nối ra sao), `flow` (chạy thế nào)
+- [inbox/questions.md](inbox/questions.md): câu hỏi đang treo
+- luật làm việc ghi trong file cục bộ, không đưa lên repo
 
-- **[concepts/](concepts/)** — một cây duy nhất, 13 chủ đề. Mỗi note là một file, trạng thái nằm ở frontmatter: `status: draft` (chưa kiểm chứng hoặc chưa chốt) hoặc `status: published` (đã kiểm chứng bằng code chạy và đã chốt).
-- **[temporary/](temporary/)** — nơi tập kết note mới trước khi tổ chức: note mới push thẳng vào đây để user coi trước, rồi dời vào `concepts/` theo lệnh user. Không phải mirror — note chỉ nằm ở một chỗ tại một thời điểm, không nhân đôi.
-- **Phân tầng (đệ quy):** mỗi concept là 1 folder chứa hub + 3 file phần + `layers/` cho concept con; folder concept nằm trong `layers/` của concept cha; folder concept tổng quan gốc đứng ở gốc chủ đề — không xếp tổng quan và đào sâu ngang nhau.
-- **[_index/](_index/topic-map.md)** — mục lục theo tên (topic-map) và thay đổi gần đây (recent-changes).
-- **[HUONG-DAN.md](HUONG-DAN.md)** — hướng dẫn sử dụng repo.
-- **[OUTLINE.md](OUTLINE.md)** — thứ tự đọc theo tầng (không phải thứ tự file).
-- **[log/open-questions.md](log/open-questions.md)** — các câu hỏi và món đang park, chờ điều tra hoặc chờ chốt.
-- **guides/** — chỉ tạo khi có nội dung đầu tiên: `howto/` (quy trình làm việc) và `debugging/` (điều tra lỗi theo triệu chứng).
-- **.maintenance/** — ghi chép nội bộ về các đợt bảo trì repo, không phải nội dung học.
-
-Tiêu chí `published`: biên dịch sạch (không lỗi, không cảnh báo lạ) + test xanh (Bruno hoặc JUnit tùy loại kiến thức) + đếm query/log thực tế nếu note liên quan hiệu năng (vd N+1, fetch). Note chưa đủ thì ở `draft`, đọc thì tự kiểm chứng lại.
-
-## Cách thêm một note
-
-1. Viết note hub đúng tầng của nó với frontmatter `status: draft`, trong folder `NN-ten-note/` của nó (hub `NN-ten-note.md` + 3 file structure.md/flow.md/classes.md + `layers/` cho concept con nếu có): folder concept tổng quan gốc ở `concepts/<chủ đề>/NN-ten-note/`, folder concept con ở `layers/NN-ten-note/` trong folder concept cha.
-2. Kiểm chứng bằng code chạy (project study hoặc ví dụ tối thiểu).
-3. Khi đã kiểm chứng và đã chốt nội dung thì sửa frontmatter thành `status: published` (không chuyển thư mục), cập nhật `OUTLINE.md` và README chủ đề.
-4. Commit + push (mỗi note một commit riêng để lịch sử rõ ràng).
-
-## Mẫu note (một khái niệm = một file ngắn)
-
-0. **Frontmatter** — title, summary một dòng, domain, status, created, updated. Chỉ note hub mới có frontmatter, file phần không cần frontmatter riêng.
-1. **Purpose** — concept giải quyết vấn đề gì?
-2. **Core idea** — ý tưởng cốt lõi, một dòng, nguyên văn, dùng để nhắc lại sau này. Ghi dạng tổng quát nhất mà luật còn đúng; trường hợp cụ thể chỉ nằm dưới làm ví dụ (vd trong mục Ví dụ), không ghi chỉ đích thị riêng một thứ.
-3. **Mental model** — giải thích ngắn giúp hình dung concept, không vẽ lại sơ đồ tổng thể.
-4. **Structure map** — liên kết nổi bật đến `structure.md` + bản đồ thu gọn đủ hiểu độc lập (thành phần + quan hệ chính); sơ đồ và chi tiết đầy đủ nằm ở file phần.
-5. **Deep dives** — mỗi phần kèm đoạn thu gọn đủ hiểu (luồng chính, trách nhiệm chính) + link tới chi tiết đầy đủ ở `flow.md`, `classes.md` và tài liệu chuyên sâu khác nếu có.
-6. **Ví dụ từ project** — link tới commit/code thật trong repo study.
-7. **Key takeaways / open questions** — điểm cần nhớ và câu hỏi chưa giải quyết (nếu có).
-Không bắt buộc đủ mọi mục — bỏ mục không phù hợp thay vì tạo nội dung hình thức.
-
-Mỗi concept là 1 folder `NN-ten-note/` chứa hub + 3 file phần + `layers/` cho concept con; folder concept nằm trong `layers/` của concept cha. Ba file phần: **structure.md** (Cấu trúc — gồm những gì, quan hệ gì, sơ đồ cấu trúc và bản vẽ tay của user đặt ở đây, kèm Navigation guide: đọc phần nào trước, vì sao, rồi đi flow hay classes, khi nào quay lại sơ đồ tổng thể), **flow.md** (Flow — chạy ra sao theo thời gian, ai gọi ai, liên kết về thành phần tương ứng trong structure.md), **classes.md** (Thành phần và trách nhiệm — vai trò và quan hệ của từng thành phần, đơn vị tùy bản chất concept: class/interface/module/process/service/component/entity, liệt kê, không vẽ lại Class Diagram đã có ở structure.md). Hub giữ Purpose/Core idea/Mental model/Structure map/Deep dives/Ví dụ/Takeaways + link tới 3 file. Ba phần phải khớp nhau, không sao chép cùng một giải thích sang nhiều file. Phần nào không phù hợp với concept thì không tạo file mà ghi nhận 1 dòng trong hub. File phần giữ chi tiết đầy đủ cho ai muốn đào sâu; hub phải đọc độc lập được mà không cần mở file phần. Đoạn thu gọn trong hub viết mới ngắn gọn, không sao chép nguyên khối từ file phần.
-
-Sơ đồ trong note viết bằng code Mermaid (GitHub tự render); bản vẽ tay của user giữ file PNG trong folder `resources/` của nhánh, không để lẫn với file .md. Chỗ nào giải thích cần sơ đồ thì code sơ đồ vào, không để giải thích cần sơ đồ mà không có sơ đồ.
-
-## Quy tắc đánh số (để khỏi refactor sau này)
-
-- Số thứ tự file = **thứ tự note được viết thực tế**, không phải thứ tự bắt buộc phải đọc.
-- Muốn đổi thứ tự đọc thì sửa `OUTLINE.md`, **không đổi tên file cũ** — đổi tên là vỡ mọi link đã dẫn tới nó.
-- Chủ đề mới xuất hiện thì thêm một thư mục dưới `concepts/` kèm README mô tả phạm vi.
-
-## Điều hướng
-
-👉 **[Xem toàn bộ danh mục tại OUTLINE.md](OUTLINE.md)**
-
-## Disclaimer
-
-Đây là ghi chú cá nhân, mang góc nhìn chủ quan của người học, không phải giáo trình chuẩn. Đọc thì tự đối chiếu và kiểm chứng độc lập với tài liệu chính thức của công nghệ liên quan.
+> Ghi chú cá nhân, mang góc nhìn chủ quan của người học. Đọc thì tự đối chiếu với tài liệu chính thức.

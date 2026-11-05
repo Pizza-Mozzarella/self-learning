@@ -15,5 +15,5 @@ Row trong bảng `Orders` sau khi lưu: `id=1 | user_id=uuid | status='PENDING' 
 Các item không nằm trong row của Order: mỗi item là một row ở `Order_Items` kèm `order_id=1`.
 
 ## Liên kết
-- **Sâu hơn:** [Save Entity](../flow/save-entity.md) (đường đi qua các tầng)
+- **Sâu hơn:** [Save Entity](../../flow/save-entity.md) (đường đi qua các tầng)
 - **Bên cạnh:** [Entity Manager](entity-manager.md)

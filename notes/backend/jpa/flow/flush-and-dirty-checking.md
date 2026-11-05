@@ -25,4 +25,4 @@ flowchart TD
 
 ## Liên kết
 - **Nền:** [Entity Lifecycle](entity-lifecycle.md) · [Persistence Context](../concepts/persistence-context.md)
-- **Bên cạnh:** [Save Entity](save-entity.md)
+- **Bên cạnh:** [Save Entity](../../flow/save-entity.md)

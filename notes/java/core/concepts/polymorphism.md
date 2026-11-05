@@ -14,4 +14,4 @@ Trong project `study`, `UserController` khai báo `private final UserService use
 
 ## Liên kết
 - **Nền:** [Interface](interface.md) · [Instance](instance.md)
-- **Bên cạnh:** [Repository Proxy](../../../spring/data/jpa/concepts/repository-proxy.md) (interface repository không có class nào ta viết, object thật do Spring Data sinh)
+- **Bên cạnh:** [Repository Proxy](../../../backend/spring/data/jpa/concepts/repository-proxy.md) (interface repository không có class nào ta viết, object thật do Spring Data sinh)

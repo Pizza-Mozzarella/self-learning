@@ -13,5 +13,5 @@ Proxy do `JpaRepositoryFactory` tạo (qua `ProxyFactory`, là JDK dynamic proxy
 `UserRepository` trong project `study` chỉ là interface. Object được đưa vào `UserServiceImpl` là proxy này, không phải class do ta viết.
 
 ## Liên kết
-- **Nền:** [Repository](repository.md) · [Polymorphism](../../../../java/core/concepts/polymorphism.md)
+- **Nền:** [Repository](repository.md) · [Polymorphism](../../../../../java/core/concepts/polymorphism.md)
 - **Sâu hơn:** [Repository Dispatch](../flow/repository-dispatch.md)

@@ -15,4 +15,4 @@ Không có Repository thì mỗi chỗ cần dữ liệu phải tự viết SQL 
 ## Liên kết
 - **Sâu hơn:** [SimpleJpaRepository](simple-jpa-repository.md) · [Repository Proxy](repository-proxy.md) · [Query Executor](query-executor.md)
 - **Bên cạnh:** [JpaSpecificationExecutor](jpa-specification-executor.md)
-- **Cấu trúc:** [Repository Hierarchy](../architecture/repository-hierarchy.md) · **Flow:** [Repository Bootstrap](../flow/repository-bootstrap.md)
+- **Cấu trúc:** [Repository Hierarchy](../architecture/repository-hierarchy.md) · **Flow:** [Repository Bootstrap](../../../flow/repository-bootstrap.md)

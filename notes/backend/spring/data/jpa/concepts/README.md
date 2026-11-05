@@ -1,6 +1,6 @@
 # Spring Data JPA: concepts
 
-Cần biết trước: [Polymorphism](../../../../java/core/concepts/polymorphism.md). Thứ tự đọc:
+Cần biết trước: [Polymorphism](../../../../../java/core/concepts/polymorphism.md). Thứ tự đọc:
 
 1. [Repository](repository.md)
 2. [SimpleJpaRepository](simple-jpa-repository.md)

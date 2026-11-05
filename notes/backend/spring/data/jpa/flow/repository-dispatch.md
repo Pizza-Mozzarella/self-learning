@@ -19,5 +19,5 @@ flowchart TD
 Bản thân proxy không chứa code làm việc thật nào.
 
 ## Liên kết
-- **Nền:** [Repository Proxy](../concepts/repository-proxy.md) · [Repository Bootstrap](repository-bootstrap.md)
+- **Nền:** [Repository Proxy](../concepts/repository-proxy.md) · [Repository Bootstrap](../../../flow/repository-bootstrap.md)
 - **Sâu hơn:** [SimpleJpaRepository](../concepts/simple-jpa-repository.md) · [Query Executor](../concepts/query-executor.md)

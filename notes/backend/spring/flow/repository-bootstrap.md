@@ -29,6 +29,6 @@ sequenceDiagram
 ```
 
 ## Liên kết
-- **Nền:** [Repository Proxy](../concepts/repository-proxy.md)
-- **Cấu trúc:** [Repository to Database](../architecture/repository-to-database.md)
-- **Sâu hơn:** [Repository Dispatch](repository-dispatch.md)
+- **Nền:** [Repository Proxy](../data/jpa/concepts/repository-proxy.md)
+- **Cấu trúc:** [Repository to Database](../../architecture/repository-to-database.md)
+- **Sâu hơn:** [Repository Dispatch](../data/jpa/flow/repository-dispatch.md)

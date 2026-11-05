@@ -7,7 +7,7 @@ verified: no
 **Một câu:** Transaction chứa EntityManager, EntityManager chứa Persistence Context, cha chết thì con chết theo.
 
 ## Bản vẽ
-![Cấu trúc tổng Spring Data, từ Application.Run tới Database](../../spring/data/jpa/architecture/assets/hand-drawn-spring-data.png)
+![Cấu trúc tổng Spring Data, từ Application.Run tới Database](../../architecture/assets/hand-drawn-spring-data.png)
 
 ## Các quan hệ
 | Quan hệ | Giữa | Ghi chú |
@@ -19,5 +19,5 @@ verified: no
 
 ## Liên kết
 - **Nền:** [Entity Manager](../concepts/entity-manager.md) · [Persistence Context](../concepts/persistence-context.md)
-- **Bên trên:** [Repository to Database](../../spring/data/jpa/architecture/repository-to-database.md)
+- **Bên trên:** [Repository to Database](../../architecture/repository-to-database.md)
 - **Flow:** [Entity Lifecycle](../flow/entity-lifecycle.md)

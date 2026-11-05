@@ -38,4 +38,4 @@ classDiagram
 
 ## Liên kết
 - **Nền:** [Repository](../concepts/repository.md)
-- **Sâu hơn:** [SimpleJpaRepository](../concepts/simple-jpa-repository.md) · [Repository to Database](repository-to-database.md)
+- **Sâu hơn:** [SimpleJpaRepository](../concepts/simple-jpa-repository.md) · [Repository to Database](../../../../architecture/repository-to-database.md)

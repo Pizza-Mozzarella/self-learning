@@ -27,10 +27,10 @@ Nguồn chỉnh sửa: [spring-data-architecture.excalidraw](assets/spring-data-
 
 ## Thành phần chính
 - `JpaRepositoryFactoryBean` (bean) `new` `JpaRepositoryFactory` và chứa nó; container gọi `getObject()` để lấy proxy.
-- `JpaRepositoryFactory` tạo [proxy](../concepts/repository-proxy.md), `new` [SimpleJpaRepository](../concepts/simple-jpa-repository.md), tạo [query executor](../concepts/query-executor.md).
-- `Proxy EntityManager` target tới EntityManager thật của transaction hiện tại, xem [Entity Manager Containment](../../../../jpa/architecture/entity-manager-containment.md).
+- `JpaRepositoryFactory` tạo [proxy](../spring/data/jpa/concepts/repository-proxy.md), `new` [SimpleJpaRepository](../spring/data/jpa/concepts/simple-jpa-repository.md), tạo [query executor](../spring/data/jpa/concepts/query-executor.md).
+- `Proxy EntityManager` target tới EntityManager thật của transaction hiện tại, xem [Entity Manager Containment](../jpa/architecture/entity-manager-containment.md).
 
 ## Liên kết
-- **Nền:** [Repository Hierarchy](repository-hierarchy.md)
-- **Flow:** [Repository Bootstrap](../flow/repository-bootstrap.md)
-- **Sâu hơn (tầng dưới):** [Entity Manager Containment](../../../../jpa/architecture/entity-manager-containment.md)
+- **Nền:** [Repository Hierarchy](../spring/data/jpa/architecture/repository-hierarchy.md)
+- **Flow:** [Repository Bootstrap](../spring/flow/repository-bootstrap.md)
+- **Sâu hơn (tầng dưới):** [Entity Manager Containment](../jpa/architecture/entity-manager-containment.md)

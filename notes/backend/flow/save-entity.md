@@ -38,6 +38,6 @@ sequenceDiagram
 - Chỉ kể các BƯỚC mà không kể các TẦNG (hoặc ngược lại) là thiếu, cần cả hai lát cắt.
 
 ## Liên kết
-- **Nền:** [Entity to Row](../concepts/entity-to-row.md) · [Entity Manager](../concepts/entity-manager.md)
-- **Bên trên:** [Repository Dispatch](../../spring/data/jpa/flow/repository-dispatch.md)
-- **Sâu hơn:** [Flush and Dirty Checking](flush-and-dirty-checking.md)
+- **Nền:** [Entity to Row](../jpa/concepts/entity-to-row.md) · [Entity Manager](../jpa/concepts/entity-manager.md)
+- **Bên trên:** [Repository Dispatch](../spring/data/jpa/flow/repository-dispatch.md)
+- **Sâu hơn:** [Flush and Dirty Checking](../jpa/flow/flush-and-dirty-checking.md)

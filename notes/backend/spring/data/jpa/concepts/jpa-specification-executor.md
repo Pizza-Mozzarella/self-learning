@@ -4,11 +4,11 @@ tags: [spring-data, jpa]
 status: draft
 verified: no
 ---
-**Một câu:** JpaRepository 4.x không kèm Specification; muốn lọc động thì phải extends thêm JpaSpecificationExecutor.
+**Một câu:** JpaRepository 4.x không kèm [Specification](../glossary.md#specification), muốn lọc động phải extends thêm JpaSpecificationExecutor.
 
 ## Ví dụ
 `OrderRepository extends JpaRepository<Order, Long>, JpaSpecificationExecutor<Order>`.
 
 ## Liên kết
 - **Nền:** [Repository](repository.md)
-- **Cấu trúc:** [Repository Hierarchy](../architecture/repository-hierarchy.md)
+- **Bên cạnh:** [Repository Hierarchy](../architecture/repository-hierarchy.md)

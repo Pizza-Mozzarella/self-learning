@@ -33,10 +33,10 @@ Lúc flush, so từng entity Managed với bản chụp lúc nạp; entity nào 
 Đẩy các thay đổi trong Persistence Context thành SQL gửi xuống DB; chạy trước commit. *(draft)*
 
 ### Commit
-Chốt transaction để các thay đổi đã gửi xuống thành bền. *(draft)*
+Chốt transaction để các thay đổi đã gửi xuống thành bền: lần chốt bền đầu tiên và duy nhất, tách khỏi flush để có điểm quyết định. *(draft)*
 
 ### Rollback
-Hủy SQL đã flush và dọn Persistence Context, đưa entity Managed hoặc Removed về Detached. *(draft)*
+Hủy SQL đã flush và dọn Persistence Context, đưa entity Managed hoặc Removed về Detached, không bao giờ về Transient (Transient chưa vào Persistence Context nên không có gì để rollback). *(draft)*
 
 ### Transaction
 Phạm vi mà EntityManager và Persistence Context sống trong đó; kết thúc bằng commit hoặc rollback. *(draft)*
@@ -49,3 +49,9 @@ Proxy EntityManager nằm trong container nhưng không phải bean, chuyển ti
 
 ### HikariCP
 Pool cấp connection: mỗi transaction mượn một connection rồi trả lại pool. *(draft)*
+
+### PrePersist
+Callback (`@PrePersist`) chạy ở tầng Hibernate, sau persist và trước INSERT, nên giá trị như `createdAt` đã có trước khi vào câu INSERT. *(draft)*
+
+### IDENTITY
+Kiểu sinh id do DB tự tăng; INSERT chạy ngay lúc persist để lấy id, không đợi flush hay commit. *(draft)*

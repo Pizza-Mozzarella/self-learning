@@ -4,7 +4,7 @@ tags: [jpa, hibernate, flow]
 status: draft
 verified: no
 ---
-**Một câu:** Một lệnh lưu đi qua các tầng Service → Repository → SimpleJpaRepository → EntityManager → Hibernate → JDBC Driver → PostgreSQL rồi quay ngược lại.
+**Một câu:** Một lệnh lưu đi xuống qua các tầng từ Service tới PostgreSQL rồi quay ngược lại.
 
 ```mermaid
 sequenceDiagram
@@ -31,13 +31,10 @@ sequenceDiagram
     Note over Service,PostgreSQL: items INSERT tương tự kèm order_id = 1, COMMIT làm các row thành bền
 ```
 
-## Giải thích
-- Chiều đọc đi ngược qua cùng các tầng: PostgreSQL trả rows → JDBC Driver → Hibernate ráp rows thành entity → EntityManager → Repository → Service → Mapper chuyển thành DTO.
-- `@PrePersist` chạy ở tầng Hibernate, sau persist và trước INSERT, nên `createdAt` đã có giá trị trước khi vào câu INSERT (không phải database tự sinh).
-- Với id IDENTITY, INSERT chạy ngay lúc persist (để lấy id), không đợi flush hay commit. Commit chỉ làm row thành bền.
-- Chỉ kể các BƯỚC mà không kể các TẦNG (hoặc ngược lại) là thiếu, cần cả hai lát cắt.
+## Ví dụ
+[`@PrePersist`](../jpa/glossary.md#prepersist) chạy sau persist và trước INSERT nên `createdAt` đã có giá trị trước khi vào câu INSERT. Với id [IDENTITY](../jpa/glossary.md#identity), INSERT chạy ngay lúc persist.
 
 ## Liên kết
 - **Nền:** [Entity to Row](../jpa/concepts/entity-to-row.md) · [Entity Manager](../jpa/concepts/entity-manager.md)
-- **Bên trên:** [Repository Dispatch](../spring/data/jpa/flow/repository-dispatch.md)
 - **Sâu hơn:** [Flush and Dirty Checking](../jpa/flow/flush-and-dirty-checking.md)
+- **Bên cạnh:** [Repository Dispatch](../spring/data/jpa/flow/repository-dispatch.md)

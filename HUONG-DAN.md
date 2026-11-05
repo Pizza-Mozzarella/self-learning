@@ -9,7 +9,7 @@ Kho ghi chú tự học Java/Spring/backend. Mỗi note là **một ý nguyên t
 | Xem cả cây, mỗi note kèm câu chốt | [INDEX.md](INDEX.md) |
 | Xem cây thư mục và số note | [notes/README.md](notes/README.md) |
 | Xem quan hệ giữa các note của một thư mục | `README.md` trong thư mục đó (có sơ đồ) |
-| Tra một thuật ngữ | `glossary.md` trong thư mục chủ đề (ví dụ [JPA](notes/backend/jpa/glossary.md)) |
+| Tra một thuật ngữ | `glossary.md` trong thư mục chủ đề ([JPA](notes/backend/jpa/glossary.md), [Spring Data JPA](notes/backend/spring/data/jpa/glossary.md), [Java core](notes/java/core/glossary.md), [Database](notes/backend/database/glossary.md)) |
 | Xem câu hỏi đang treo | [inbox/questions.md](inbox/questions.md) |
 
 Mẹo: mở thư mục repo bằng Obsidian (Open folder as vault) để duyệt cây gập mở và xem Graph view.

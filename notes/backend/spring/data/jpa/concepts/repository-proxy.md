@@ -4,7 +4,7 @@ tags: [spring-data, jpa, proxy]
 status: draft
 verified: no
 ---
-**Một câu:** Bean Repository mà Spring inject chính là một proxy: nó không chứa code làm việc thật, chỉ điều hướng từng method tới target.
+**Một câu:** Bean Repository mà Spring inject là một [proxy](../glossary.md#proxy), không chứa code làm việc thật.
 
 ## Ví dụ
 `UserRepository` chỉ là interface; object được đưa vào `UserServiceImpl` là proxy này.

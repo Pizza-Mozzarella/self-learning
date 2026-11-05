@@ -4,12 +4,11 @@ tags: [spring-data, jpa]
 status: draft
 verified: no
 ---
-**Một câu:** Repository chỉ là interface, không có code; Spring Data tự sinh implementation lúc chạy: ta khai báo CẦN GÌ, framework lo LÀM NHƯ THẾ NÀO.
+**Một câu:** Repository chỉ là interface, Spring Data tự sinh implementation lúc chạy.
 
 ## Ví dụ
-`OrderRepository` kế thừa save/findById từ `JpaRepository`, findAll(Spec) từ `JpaSpecificationExecutor`, tự khai báo `findWithDetailsById`.
+Ta khai báo cần gì, framework lo làm như thế nào. `OrderRepository` kế thừa save/findById từ `JpaRepository`, findAll(Spec) từ `JpaSpecificationExecutor`, tự khai báo `findWithDetailsById`.
 
 ## Liên kết
 - **Sâu hơn:** [Repository Proxy](repository-proxy.md)
-- **Bên cạnh:** [JpaSpecificationExecutor](jpa-specification-executor.md)
-- **Cấu trúc:** [Repository Hierarchy](../architecture/repository-hierarchy.md) · **Flow:** [Repository Bootstrap](../../../flow/repository-bootstrap.md)
+- **Bên cạnh:** [JpaSpecificationExecutor](jpa-specification-executor.md) · [Repository Hierarchy](../architecture/repository-hierarchy.md) · [Repository Bootstrap](../../../flow/repository-bootstrap.md)

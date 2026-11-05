@@ -18,6 +18,5 @@ verified: no
 | DÙNG / CẤP | EntityManager dùng CONNECTION; HikariCP cấp CONNECTION; CONNECTION tới Database | mỗi transaction mượn một CONNECTION rồi trả lại pool |
 
 ## Liên kết
-- **Nền:** [Entity Manager](../concepts/entity-manager.md) · [Persistence Context](../concepts/persistence-context.md)
-- **Bên trên:** [Repository to Database](../../architecture/repository-to-database.md)
-- **Flow:** [Entity Lifecycle](../flow/entity-lifecycle.md)
+- **Nền:** [Entity Manager](../concepts/entity-manager.md) · [Persistence Context](../concepts/persistence-context.md) · [Repository to Database](../../architecture/repository-to-database.md)
+- **Bên cạnh:** [Entity Lifecycle](../flow/entity-lifecycle.md)

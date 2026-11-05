@@ -4,28 +4,32 @@ _Tự sinh bằng `node tools/notes.js index`, đừng sửa tay._
 
 - **[backend/](notes/backend/README.md)**
   - **[architecture/](notes/backend/architecture/README.md)**
-    - [Repository to Database](notes/backend/architecture/repository-to-database.md) — FactoryBean tạo Factory, Factory tạo ra proxy cùng SimpleJpaRepository cùng query executor; lúc chạy chỉ có proxy là bean, các thứ còn lại nằm bên trong nó. *(draft)*
+    - [Repository to Database](notes/backend/architecture/repository-to-database.md) — Lúc chạy chỉ [proxy](../spring/data/jpa/glossary.md#proxy) là [bean](../spring/data/jpa/glossary.md#bean), còn SimpleJpaRepository cùng query executor nằm bên trong nó làm [target](../spring/data/jpa/glossary.md#target). *(draft)*
   - **database/**
+    - [Thuật ngữ](notes/backend/database/glossary.md) — 3 mục, 0 đã chốt
     - **[concepts/](notes/backend/database/concepts/README.md)**
-      - [Data Migration](notes/backend/database/concepts/data-migration.md) — Quản lý mọi thay đổi của database theo thời gian bằng script có version, áp theo đúng thứ tự, thay vì sửa schema tay hay để Hibernate tự đoán (`ddl-auto`). *(draft)*
-      - [Schema](notes/backend/database/concepts/schema.md) — Schema là cấu trúc của database (bảng nào, cột nào, kiểu gì, ràng buộc gì), là cái khung, còn data là các row đổ vào khung đó. *(draft)*
+      - [Data Migration](notes/backend/database/concepts/data-migration.md) — Quản lý thay đổi của database bằng script có version, áp theo đúng thứ tự. *(draft)*
+      - [Schema](notes/backend/database/concepts/schema.md) — Schema là cấu trúc của database: bảng nào, cột nào, kiểu gì, ràng buộc gì. *(draft)*
   - **[flow/](notes/backend/flow/README.md)**
-    - [Save Entity](notes/backend/flow/save-entity.md) — Một lệnh lưu đi qua các tầng Service → Repository → SimpleJpaRepository → EntityManager → Hibernate → JDBC Driver → PostgreSQL rồi quay ngược lại. *(draft)*
+    - [Save Entity](notes/backend/flow/save-entity.md) — Một lệnh lưu đi xuống qua các tầng từ Service tới PostgreSQL rồi quay ngược lại. *(draft)*
   - **jpa/**
-    - [Thuật ngữ](notes/backend/jpa/glossary.md) — 16 mục, 0 đã chốt
+    - [Thuật ngữ](notes/backend/jpa/glossary.md) — 18 mục, 0 đã chốt
     - **[architecture/](notes/backend/jpa/architecture/README.md)**
       - [Entity Manager Containment](notes/backend/jpa/architecture/entity-manager-containment.md) — Transaction chứa EntityManager, EntityManager chứa Persistence Context, cha chết thì con chết theo. *(draft)*
     - **[concepts/](notes/backend/jpa/concepts/README.md)**
       - [Cascade Parent-Child Only](notes/backend/jpa/concepts/cascade-parent-child-only.md) — Chỉ đặt cascade ở quan hệ cha–con thật (bài kiểm tra: xóa cha thì con có nên biến mất theo không). *(draft)*
       - [Cascade](notes/backend/jpa/concepts/cascade.md) — Cascade là danh sách thao tác được phép lan từ entity mang annotation sang entity được tham chiếu. *(draft)*
+      - [Collection to Child Table](notes/backend/jpa/concepts/collection-to-child-table.md) — List được lưu thành một bảng riêng, mỗi phần tử một row. *(draft)*
       - [Connection](notes/backend/jpa/concepts/connection.md) *(stub)* — Connection là gì, ai cấp nó (HikariCP), và vì sao transaction mượn rồi trả lại pool thay vì giữ hoài?
       - [Entity Manager Is Not a Connection](notes/backend/jpa/concepts/entity-manager-is-not-connection.md) — EntityManager không phải connection: nó dùng connection (qua Hibernate, JDBC) để làm việc. *(draft)*
       - [Entity Manager Is Not Thread-Safe](notes/backend/jpa/concepts/entity-manager-is-not-thread-safe.md) — EntityManager không thread-safe. *(draft)*
-      - [Entity Manager](notes/backend/jpa/concepts/entity-manager.md) — EntityManager là object trung tâm của JPA để quản lý entity (persist, find, merge, remove, query). *(draft)*
-      - [Entity to Row](notes/backend/jpa/concepts/entity-to-row.md) — Bảng không bao giờ chứa object: Hibernate tháo object ra thành giá trị phẳng, tham chiếu thành id khóa ngoại, list thành bảng riêng, chỉ field đơn mới thành cột. *(draft)*
+      - [Entity Manager](notes/backend/jpa/concepts/entity-manager.md) — EntityManager là object trung tâm của JPA để quản lý entity. *(draft)*
+      - [Entity to Row](notes/backend/jpa/concepts/entity-to-row.md) — Bảng không bao giờ chứa object: Hibernate tháo object ra thành giá trị phẳng. *(draft)*
       - [Orphan Removal](notes/backend/jpa/concepts/orphan-removal.md) — orphanRemoval không phải CascadeType: nó kích hoạt khi con bị gỡ khỏi collection, còn REMOVE kích hoạt khi remove cha. *(draft)*
       - [Persistence Context](notes/backend/jpa/concepts/persistence-context.md) — Persistence Context là bộ nhớ đệm các entity đang [Managed](../glossary.md#managed), do EntityManager giữ. *(draft)*
+      - [Reference to Foreign Key](notes/backend/jpa/concepts/reference-to-foreign-key.md) — Tham chiếu tới entity khác được lưu thành id khóa ngoại. *(draft)*
       - [Shared Entity Manager](notes/backend/jpa/concepts/shared-entity-manager.md) — Thứ ta cầm trong Spring không phải EntityManager thật mà là một [shared proxy](../glossary.md#shared-proxy), chuyển tiếp tới [Session](../glossary.md#session) của transaction hiện tại. *(draft)*
+      - [Simple Field to Column](notes/backend/jpa/concepts/simple-field-to-column.md) — Chỉ field đơn (chuỗi, số, ngày) mới thành cột. *(draft)*
     - **[flow/](notes/backend/jpa/flow/README.md)**
       - [Cascade Propagation](notes/backend/jpa/flow/cascade-propagation.md) — Thao tác nào có trong danh sách cascade thì lan từ cha sang con khi thực hiện trên cha. *(draft)*
       - [Entity Lifecycle](notes/backend/jpa/flow/entity-lifecycle.md) — Vòng đời của entity là quan hệ của nó với [Persistence Context](../glossary.md#persistence-context), không phải trạng thái của row trong DB. *(draft)*
@@ -33,13 +37,16 @@ _Tự sinh bằng `node tools/notes.js index`, đừng sửa tay._
   - **spring/**
     - **data/**
       - **jpa/**
+        - [Thuật ngữ](notes/backend/spring/data/jpa/glossary.md) — 7 mục, 0 đã chốt
         - **[architecture/](notes/backend/spring/data/jpa/architecture/README.md)**
           - [Repository Hierarchy](notes/backend/spring/data/jpa/architecture/repository-hierarchy.md) — SimpleJpaRepository nằm ở đáy cây kế thừa của Spring Data JPA, implements JpaRepositoryImplementation (gom JpaRepository với JpaSpecificationExecutor). *(draft)* ✔
         - **[concepts/](notes/backend/spring/data/jpa/concepts/README.md)**
-          - [JpaSpecificationExecutor](notes/backend/spring/data/jpa/concepts/jpa-specification-executor.md) — JpaRepository 4.x không kèm Specification; muốn lọc động thì phải extends thêm JpaSpecificationExecutor. *(draft)*
+          - [JpaSpecificationExecutor](notes/backend/spring/data/jpa/concepts/jpa-specification-executor.md) — JpaRepository 4.x không kèm [Specification](../glossary.md#specification), muốn lọc động phải extends thêm JpaSpecificationExecutor. *(draft)*
           - [Query Executor](notes/backend/spring/data/jpa/concepts/query-executor.md) — Query executor phân tích tên method (và annotation) thành query chuẩn bị sẵn lúc startup, lúc chạy chỉ việc chạy. *(draft)*
-          - [Repository Proxy](notes/backend/spring/data/jpa/concepts/repository-proxy.md) — Bean Repository mà Spring inject chính là một proxy: nó không chứa code làm việc thật, chỉ điều hướng từng method tới target. *(draft)*
-          - [Repository](notes/backend/spring/data/jpa/concepts/repository.md) — Repository chỉ là interface, không có code; Spring Data tự sinh implementation lúc chạy: ta khai báo CẦN GÌ, framework lo LÀM NHƯ THẾ NÀO. *(draft)*
+          - [Repository Proxy](notes/backend/spring/data/jpa/concepts/repository-proxy.md) — Bean Repository mà Spring inject là một [proxy](../glossary.md#proxy), không chứa code làm việc thật. *(draft)*
+          - [Repository](notes/backend/spring/data/jpa/concepts/repository.md) — Repository chỉ là interface, Spring Data tự sinh implementation lúc chạy. *(draft)*
+          - [Simple JPA Repository Holds an Entity Manager](notes/backend/spring/data/jpa/concepts/simple-jpa-repository-holds-an-entity-manager.md) — SimpleJpaRepository giữ một EntityManager qua constructor. *(draft)*
+          - [Simple JPA Repository Is Not a Bean](notes/backend/spring/data/jpa/concepts/simple-jpa-repository-is-not-a-bean.md) — SimpleJpaRepository chỉ được `new` bởi JpaRepositoryFactory: nó không phải [bean](../glossary.md#bean), cũng không được inject. *(draft)*
           - [SimpleJpaRepository](notes/backend/spring/data/jpa/concepts/simple-jpa-repository.md) — SimpleJpaRepository là class viết sẵn làm việc thật cho các method chuẩn của repository. *(draft)*
         - **[flow/](notes/backend/spring/data/jpa/flow/README.md)**
           - [Repository Dispatch](notes/backend/spring/data/jpa/flow/repository-dispatch.md) — Proxy là cái ngã tư: method chuẩn rẽ sang SimpleJpaRepository, method query rẽ sang query executor, method custom rẽ sang class custom của ta. *(draft)*
@@ -47,7 +54,6 @@ _Tự sinh bằng `node tools/notes.js index`, đừng sửa tay._
       - [Repository Bootstrap](notes/backend/spring/flow/repository-bootstrap.md) — Factory tạo proxy cùng SimpleJpaRepository, proxy được đưa cho Spring container quản lý thành bean, Spring inject bean vào nơi cần, bean hoạt động bằng cách điều hướng tới các target mà factory tạo bên trong. *(draft)*
 - **java/**
   - **core/**
+    - [Thuật ngữ](notes/java/core/glossary.md) — 2 mục, 0 đã chốt
     - **[concepts/](notes/java/core/concepts/README.md)**
-      - [Instance](notes/java/core/concepts/instance.md) *(stub)* — Instance (object thật) khác class ở chỗ nào, và ai quyết định tạo nó bằng `new`?
-      - [Interface](notes/java/core/concepts/interface.md) *(stub)* — Interface trong Java là gì, và nó cho ta biết điều gì về một object mà không nói object đó làm việc thế nào?
-      - [Polymorphism](notes/java/core/concepts/polymorphism.md) — Ta khai báo thứ cần dùng bằng interface, nhưng lúc chạy thứ được đưa vào luôn là một object thật của một class cụ thể. *(draft)*
+      - [Polymorphism](notes/java/core/concepts/polymorphism.md) — Ta khai báo thứ cần dùng bằng [interface](../glossary.md#interface), nhưng lúc chạy thứ được đưa vào luôn là một [instance](../glossary.md#instance) thật của một class cụ thể. *(draft)*

@@ -17,11 +17,8 @@ flowchart TD
     Merge --> Flush
 ```
 
-## Giải thích
-- Managed, không save: vẫn lưu (dirty checking lo).
-- Detached, không save: mất.
-- Detached, có save: lưu (merge → UPDATE lúc flush, bền lúc commit).
-- Flush chạy TRƯỚC, commit SAU. Commit là lần chốt bền đầu tiên và duy nhất, tách hai bước để có điểm quyết định. `setSellPrice` chỉ đổi entity trong PC; UPDATE xuất hiện lúc flush trước commit, không phải lúc set.
+## Ví dụ
+`setSellPrice` chỉ đổi entity trong Persistence Context; UPDATE xuất hiện lúc flush trước commit, không phải lúc set.
 
 ## Liên kết
 - **Nền:** [Entity Lifecycle](entity-lifecycle.md) · [Persistence Context](../concepts/persistence-context.md)

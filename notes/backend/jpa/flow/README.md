@@ -9,13 +9,15 @@ flowchart TD
     n1["Entity Lifecycle"]:::draft
     n2["Flush and Dirty Checking"]:::draft
     n3["Save Entity<br/>(backend/flow)"]:::ext
-    n4["Cascade<br/>(jpa/concepts)"]:::ext
-    n5["Orphan Removal<br/>(jpa/concepts)"]:::ext
-    n6["Persistence Context<br/>(jpa/concepts)"]:::ext
+    n4["Entity Manager Containment<br/>(jpa/architecture)"]:::ext
+    n5["Cascade<br/>(jpa/concepts)"]:::ext
+    n6["Orphan Removal<br/>(jpa/concepts)"]:::ext
+    n7["Persistence Context<br/>(jpa/concepts)"]:::ext
     n3 --> n2
-    n4 --> n0
-    n6 --> n1
-    n0 -.- n5
+    n4 -.- n1
+    n5 --> n0
+    n7 --> n1
+    n0 -.- n6
     n1 --> n2
     n2 -.- n3
     classDef stub fill:#eeeeee,stroke:#999999,stroke-dasharray:4 3,color:#555555

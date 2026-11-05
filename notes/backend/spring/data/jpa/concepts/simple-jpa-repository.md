@@ -6,10 +6,7 @@ verified: no
 ---
 **Một câu:** SimpleJpaRepository là class viết sẵn làm việc thật cho các method chuẩn của repository.
 
-## Ghi chú nhanh
-- Giữ một `EntityManager` qua constructor.
-- Chỉ được `new` bởi `JpaRepositoryFactory`: không phải bean, không được inject.
-
 ## Liên kết
 - **Nền:** [Repository](repository.md)
-- **Cấu trúc:** [Repository Hierarchy](../architecture/repository-hierarchy.md)
+- **Sâu hơn:** [Simple JPA Repository Holds an Entity Manager](simple-jpa-repository-holds-an-entity-manager.md) · [Simple JPA Repository Is Not a Bean](simple-jpa-repository-is-not-a-bean.md)
+- **Bên cạnh:** [Repository Hierarchy](../architecture/repository-hierarchy.md)

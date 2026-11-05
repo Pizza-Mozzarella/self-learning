@@ -8,4 +8,4 @@ verified: no
 
 ## Liên kết
 - **Nền:** [Entity Manager](entity-manager.md) · [Repository Proxy](../../spring/data/jpa/concepts/repository-proxy.md)
-- **Cấu trúc:** [Containment](../architecture/entity-manager-containment.md)
+- **Bên cạnh:** [Containment](../architecture/entity-manager-containment.md)

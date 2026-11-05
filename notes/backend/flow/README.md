@@ -8,7 +8,9 @@ flowchart TD
     n0["Save Entity"]:::draft
     n1["Entity to Row<br/>(jpa/concepts)"]:::ext
     n2["Flush and Dirty Checking<br/>(jpa/flow)"]:::ext
+    n3["Repository Dispatch<br/>(jpa/flow)"]:::ext
     n0 --> n2
+    n0 -.- n3
     n1 --> n0
     n2 -.- n0
     classDef stub fill:#eeeeee,stroke:#999999,stroke-dasharray:4 3,color:#555555

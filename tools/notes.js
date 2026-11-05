@@ -137,7 +137,9 @@ function check() {
   if (cur !== buildIndex()) errors.push("INDEX.md cũ, chạy: node tools/notes.js index");
   // Sơ đồ chỉ được vẽ từ dữ kiện thật: không có vòng mâu thuẫn, và README phải khớp với link hiện tại.
   const ctx = mapContext();
-  for (const c of mapLib.findCycles(ctx.info, ctx.edges)) errors.push(`vòng Nền/Sâu hơn mâu thuẫn: ${c.map((f) => path.basename(f, ".md")).join(" -> ")}`);
+  for (const [kind, label] of [["dir", "Sâu hơn"], ["base", "Nền"]]) {
+    for (const c of mapLib.findCycles(ctx.info, ctx.edges, kind)) errors.push(`vòng ${label} mâu thuẫn: ${c.map((f) => path.basename(f, ".md")).join(" -> ")}`);
+  }
   for (const [readme, text] of mapLib.buildReadmes(ctx)) {
     if (fs.readFileSync(readme, "utf8").replace(/\r\n/g, "\n") !== text) errors.push(`${rel(readme)}: sơ đồ cũ, chạy: node tools/notes.js map`);
   }

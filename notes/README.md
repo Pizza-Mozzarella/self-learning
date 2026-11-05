@@ -45,6 +45,8 @@ flowchart TD
     d19["concepts/<br/>3 note"]
     d18 --> d19
 ```
+
+_Chú thích: mỗi ô là một thư mục; số note là số note nằm trực tiếp trong thư mục đó._
 <!-- tree:end -->
 
 - [java/core](java/core/concepts/README.md)

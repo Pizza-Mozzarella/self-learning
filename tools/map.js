@@ -29,7 +29,7 @@ function collectEdges(info) {
   const edges = []; // {from, to, kind: "dir"|"side"}
   const add = (from, to, kind) => {
     if (from === to) return;
-    const key = kind === "side" ? `s|${[from, to].sort().join("|")}` : `d|${from}|${to}`;
+    const key = kind === "side" ? `s|${[from, to].sort().join("|")}` : `${kind}|${from}|${to}`;
     if (seen.has(key)) return;
     seen.add(key);
     edges.push({ from, to, kind });
@@ -37,8 +37,8 @@ function collectEdges(info) {
   for (const [file, n] of info) {
     for (const e of readLinks(n.body, file)) {
       if (!info.has(e.target)) continue;
-      if (e.type === "base") add(e.target, file, "dir"); // nền đứng trước, mũi tên đi từ nền tới note
-      else if (e.type === "deeper") add(file, e.target, "dir"); // sâu hơn đi từ note xuống phần con
+      if (e.type === "base") add(e.target, file, "base"); // thứ tự học: chỉ để kiểm tra mâu thuẫn, không vẽ
+      else if (e.type === "deeper") add(file, e.target, "dir"); // cấu trúc: note là cha, đích là phần con/chi tiết
       else add(file, e.target, "side");
     }
   }
@@ -46,9 +46,9 @@ function collectEdges(info) {
 }
 
 // Hai note không thể cùng là nền/chi tiết của nhau: vòng như vậy là mâu thuẫn.
-function findCycles(info, edges) {
+function findCycles(info, edges, kind) {
   const adj = new Map();
-  for (const e of edges) if (e.kind === "dir") (adj.get(e.from) || adj.set(e.from, []).get(e.from)).push(e.to);
+  for (const e of edges) if (e.kind === kind) (adj.get(e.from) || adj.set(e.from, []).get(e.from)).push(e.to);
   const state = new Map(), cycles = [];
   const dfs = (u, stack) => {
     state.set(u, 1);
@@ -74,7 +74,7 @@ function relationMap(dir, info, edges, notesDir) {
   const internal = [...info.keys()].filter((f) => path.dirname(f) === dir).sort();
   if (!internal.length) return "";
   const inSet = new Set(internal);
-  const rel = edges.filter((e) => inSet.has(e.from) || inSet.has(e.to));
+  const rel = edges.filter((e) => e.kind !== "base" && (inSet.has(e.from) || inSet.has(e.to)));
   const ext = new Set();
   for (const e of rel) for (const f of [e.from, e.to]) if (!inSet.has(f)) ext.add(f);
   if (!rel.length) return "";
@@ -92,6 +92,14 @@ function relationMap(dir, info, edges, notesDir) {
   }
   for (const e of rel) out.push(`    ${ids.get(e.from)} ${e.kind === "side" ? "-.-" : "-->"} ${ids.get(e.to)}`);
   out.push(...CLASSES, "```");
+  // Chú thích chỉ gồm những thứ thật sự xuất hiện trong sơ đồ này.
+  const parts = [];
+  if (rel.some((e) => e.kind === "dir")) parts.push("mũi tên A → B: B là phần con hoặc chi tiết của A");
+  if (rel.some((e) => e.kind === "side")) parts.push("nét đứt: liên quan ngang cấp, không có thứ tự");
+  const named = { draft: "ô vàng: draft (đã viết, chưa chốt)", ok: "ô xanh: ok (đã chốt)", stub: "ô xám nét đứt: stub (chưa học)" };
+  for (const s of ["draft", "ok", "stub"]) if (internal.some((f) => info.get(f).status === s)) parts.push(named[s]);
+  if (ext.size) parts.push("ô viền nhạt: note ở thư mục khác");
+  out.push("", `_Chú thích: ${parts.join(" · ")}._`);
   return out.join("\n");
 }
 
@@ -113,7 +121,8 @@ function treeMap(dir, info) {
     for (const s of subdirs(d)) walk(s, id);
   };
   walk(dir, null);
-  return ["```mermaid", "flowchart TD", ...lines, "```"].join("\n");
+  const legend = [...counts.keys()].some((d) => d.startsWith(dir)) ? ["", "_Chú thích: mỗi ô là một thư mục; số note là số note nằm trực tiếp trong thư mục đó._"] : [];
+  return ["```mermaid", "flowchart TD", ...lines, "```", ...legend].join("\n");
 }
 
 const MAP_START = "<!-- map:start -->", MAP_END = "<!-- map:end -->";

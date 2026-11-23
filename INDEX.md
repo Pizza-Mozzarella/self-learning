@@ -4,16 +4,16 @@ _Tự sinh bằng `node tools/notes.js index`, đừng sửa tay._
 
 - **[backend/](notes/backend/README.md)**
   - **[architecture/](notes/backend/architecture/README.md)**
-    - [Repository to Database](notes/backend/architecture/repository-to-database.md) — Lúc chạy chỉ [proxy](../spring/data/jpa/glossary.md#proxy) là [bean](../spring/data/jpa/glossary.md#bean), còn SimpleJpaRepository cùng query executor nằm bên trong nó làm [target](../spring/data/jpa/glossary.md#target). *(draft)*
+    - [Repository to Database](notes/backend/architecture/repository-to-database.md) — Lúc chạy chỉ [proxy](../../computer-science/software-design/glossary.md#proxy) là [bean](../spring/glossary.md#bean), còn SimpleJpaRepository cùng query executor nằm bên trong nó làm [target](../../computer-science/software-design/glossary.md#target). *(draft)*
   - **database/**
-    - [Thuật ngữ](notes/backend/database/glossary.md) — 3 mục, 0 đã chốt
+    - [Thuật ngữ](notes/backend/database/glossary.md) — 2 mục, 0 đã chốt
     - **[concepts/](notes/backend/database/concepts/README.md)**
       - [Data Migration](notes/backend/database/concepts/data-migration.md) — Quản lý thay đổi của database bằng script có version, áp theo đúng thứ tự. *(draft)*
       - [Schema](notes/backend/database/concepts/schema.md) — Schema là cấu trúc của database: bảng nào, cột nào, kiểu gì, ràng buộc gì. *(draft)*
   - **[flow/](notes/backend/flow/README.md)**
     - [Save Entity](notes/backend/flow/save-entity.md) — Một lệnh lưu đi xuống qua các tầng từ Service tới PostgreSQL rồi quay ngược lại. *(draft)*
   - **jpa/**
-    - [Thuật ngữ](notes/backend/jpa/glossary.md) — 18 mục, 0 đã chốt
+    - [Thuật ngữ](notes/backend/jpa/glossary.md) — 19 mục, 0 đã chốt
     - **[architecture/](notes/backend/jpa/architecture/README.md)**
       - [Entity Manager Containment](notes/backend/jpa/architecture/entity-manager-containment.md) — Transaction chứa EntityManager, EntityManager chứa Persistence Context, cha chết thì con chết theo. *(draft)*
     - **[concepts/](notes/backend/jpa/concepts/README.md)**
@@ -35,25 +35,63 @@ _Tự sinh bằng `node tools/notes.js index`, đừng sửa tay._
       - [Entity Lifecycle](notes/backend/jpa/flow/entity-lifecycle.md) — Vòng đời của entity là quan hệ của nó với [Persistence Context](../glossary.md#persistence-context), không phải trạng thái của row trong DB. *(draft)*
       - [Flush and Dirty Checking](notes/backend/jpa/flow/flush-and-dirty-checking.md) — Thay đổi trên entity chỉ xuống DB khi có cơ chế mang nó đi: [Managed](../glossary.md#managed) thì [dirty checking](../glossary.md#dirty-checking) lo, [Detached](../glossary.md#detached) thì chỉ [save](../glossary.md#merge) (merge) mới mang được. *(draft)*
   - **spring/**
+    - [Thuật ngữ](notes/backend/spring/glossary.md) — 3 mục, 0 đã chốt
     - **data/**
       - **jpa/**
-        - [Thuật ngữ](notes/backend/spring/data/jpa/glossary.md) — 7 mục, 0 đã chốt
+        - [Thuật ngữ](notes/backend/spring/data/jpa/glossary.md) — 2 mục, 0 đã chốt
         - **[architecture/](notes/backend/spring/data/jpa/architecture/README.md)**
           - [Repository Hierarchy](notes/backend/spring/data/jpa/architecture/repository-hierarchy.md) — SimpleJpaRepository nằm ở đáy cây kế thừa của Spring Data JPA, implements JpaRepositoryImplementation (gom JpaRepository với JpaSpecificationExecutor). *(draft)* ✔
         - **[concepts/](notes/backend/spring/data/jpa/concepts/README.md)**
           - [JpaSpecificationExecutor](notes/backend/spring/data/jpa/concepts/jpa-specification-executor.md) — JpaRepository 4.x không kèm [Specification](../glossary.md#specification), muốn lọc động phải extends thêm JpaSpecificationExecutor. *(draft)*
           - [Query Executor](notes/backend/spring/data/jpa/concepts/query-executor.md) — Query executor phân tích tên method (và annotation) thành query chuẩn bị sẵn lúc startup, lúc chạy chỉ việc chạy. *(draft)*
-          - [Repository Proxy](notes/backend/spring/data/jpa/concepts/repository-proxy.md) — Bean Repository mà Spring inject là một [proxy](../glossary.md#proxy), không chứa code làm việc thật. *(draft)*
+          - [Repository Proxy](notes/backend/spring/data/jpa/concepts/repository-proxy.md) — Bean Repository mà Spring inject là một [proxy](../../../../../computer-science/software-design/glossary.md#proxy), không chứa code làm việc thật. *(draft)*
           - [Repository](notes/backend/spring/data/jpa/concepts/repository.md) — Repository chỉ là interface, Spring Data tự sinh implementation lúc chạy. *(draft)*
           - [Simple JPA Repository Holds an Entity Manager](notes/backend/spring/data/jpa/concepts/simple-jpa-repository-holds-an-entity-manager.md) — SimpleJpaRepository giữ một EntityManager qua constructor. *(draft)*
-          - [Simple JPA Repository Is Not a Bean](notes/backend/spring/data/jpa/concepts/simple-jpa-repository-is-not-a-bean.md) — SimpleJpaRepository chỉ được `new` bởi JpaRepositoryFactory: nó không phải [bean](../glossary.md#bean), cũng không được inject. *(draft)*
+          - [Simple JPA Repository Is Not a Bean](notes/backend/spring/data/jpa/concepts/simple-jpa-repository-is-not-a-bean.md) — SimpleJpaRepository chỉ được `new` bởi JpaRepositoryFactory: nó không phải [bean](../../../glossary.md#bean), cũng không được inject. *(draft)*
           - [SimpleJpaRepository](notes/backend/spring/data/jpa/concepts/simple-jpa-repository.md) — SimpleJpaRepository là class viết sẵn làm việc thật cho các method chuẩn của repository. *(draft)*
         - **[flow/](notes/backend/spring/data/jpa/flow/README.md)**
           - [Repository Dispatch](notes/backend/spring/data/jpa/flow/repository-dispatch.md) — Proxy là cái ngã tư: method chuẩn rẽ sang SimpleJpaRepository, method query rẽ sang query executor, method custom rẽ sang class custom của ta. *(draft)*
     - **[flow/](notes/backend/spring/flow/README.md)**
       - [Repository Bootstrap](notes/backend/spring/flow/repository-bootstrap.md) — Factory tạo proxy cùng SimpleJpaRepository, proxy được đưa cho Spring container quản lý thành bean, Spring inject bean vào nơi cần, bean hoạt động bằng cách điều hướng tới các target mà factory tạo bên trong. *(draft)*
+- **computer-science/**
+  - **concurrency/**
+    - [Thuật ngữ](notes/computer-science/concurrency/glossary.md) — 1 mục, 1 đã chốt
+    - **[concepts/](notes/computer-science/concurrency/concepts/README.md)**
+      - [One Thread per Core](notes/computer-science/concurrency/concepts/one-thread-per-core.md) — Core CPU chỉ chạy một thread tại một thời điểm.
+      - [Thread Distribution](notes/computer-science/concurrency/concepts/thread-distribution.md) — Chia ra nhiều thread để phân cho nhiều core, vì core cần thread để chạy.
+  - **software-design/**
+    - [Thuật ngữ](notes/computer-science/software-design/glossary.md) — 2 mục, 0 đã chốt
+    - **[concepts/](notes/computer-science/software-design/concepts/README.md)**
+      - [Dependency Injection](notes/computer-science/software-design/concepts/dependency-injection.md) — Dependency Injection là để một bên khác quản lý (tạo và nối) thay mình, class không tự tạo thứ nó cần.
 - **java/**
+  - **collections/**
+    - [Thuật ngữ](notes/java/collections/glossary.md) — 4 mục, 0 đã chốt
+    - **[architecture/](notes/java/collections/architecture/README.md)**
+      - [Collection Hierarchy](notes/java/collections/architecture/collection-hierarchy.md) — Collection là cây gồm List, Set, Queue chung gốc Iterable, còn Map là nhánh riêng không kế thừa Collection. *(draft)*
+      - [Hash Chooses the Bucket](notes/java/collections/architecture/hash-chooses-the-bucket.md) — [Hash](../glossary.md#hash) của key quyết định cặp key-value nằm ở [bucket](../glossary.md#bucket) nào. *(draft)*
+      - [HashMap Structure](notes/java/collections/architecture/hashmap-structure.md) — HashMap là một mảng thô, mỗi ngăn là con trỏ tới node đầu của một chuỗi node. *(draft)*
+    - **[concepts/](notes/java/collections/concepts/README.md)**
+      - [ArrayList Grows by Copying](notes/java/collections/concepts/arraylist-grows-by-copying.md) — Hết chỗ thì ArrayList tạo mảng mới lớn hơn rồi copy phần tử cũ sang. *(draft)*
+      - [ArrayList Has No Gaps](notes/java/collections/concepts/arraylist-has-no-gaps.md) — ArrayList chỉ cho chèn ở index từ 0 đến size, nên không bao giờ có ngăn trống ở giữa. *(draft)*
+      - [ArrayList Is Not Just a Resizable Array](notes/java/collections/concepts/arraylist-is-not-just-a-resizable-array.md) — ArrayList là mảng thô được bọc thêm một lớp quản lý, không chỉ là mảng nguyên thủy biết co giãn. *(draft)*
+      - [ArrayList Size vs Capacity](notes/java/collections/concepts/arraylist-size-vs-capacity.md) — ArrayList giữ size riêng, tách khỏi [capacity](../glossary.md#capacity) là độ dài mảng bên trong. *(draft)*
+      - [Comparable Lives in the Class](notes/java/collections/concepts/comparable-lives-in-the-class.md) — Comparable là class tự có compareTo trong chính nó để so this với object khác, nên mỗi class chỉ có một thứ tự mặc định. *(draft)*
+      - [Comparator from a Key](notes/java/collections/concepts/comparator-from-a-key.md) — Comparator.comparingDouble nhận một hàm lấy số ra từ phần tử rồi tạo Comparator so theo số đó, còn reversed đảo chiều của Comparator đứng ngay trước nó. *(draft)*
+      - [Comparator Lives Outside the Class](notes/java/collections/concepts/comparator-lives-outside-the-class.md) — Comparator là cách so sánh viết ngoài class rồi đưa cho sort, nên một class có thể có nhiều cách sắp xếp. *(draft)*
+      - [Equals and HashCode Contract](notes/java/collections/concepts/equals-and-hashcode-contract.md) — Hai object equals nhau thì bắt buộc cùng hashCode, còn ngược lại thì không, vì hash trùng chỉ là [collision](../glossary.md#collision). *(draft)*
+      - [HashMap Needs a Raw Array](notes/java/collections/concepts/hashmap-needs-a-raw-array.md) — HashMap dùng mảng thô thay vì ArrayList vì cần đặt thẳng vào ngăn do hash chọn, kể cả khi các ngăn trước đó còn trống. *(draft)*
+      - [LinkedHashMap Order](notes/java/collections/concepts/linkedhashmap-order.md) — LinkedHashMap là HashMap thêm một danh sách liên kết hai chiều đi qua mọi entry để nhớ thứ tự thêm vào. *(draft)*
+      - [Map Duplicate Key Policy](notes/java/collections/concepts/map-duplicate-key-policy.md) — Map chỉ cho một key một value, nên khi key trùng thì làm gì (ghi đè, cộng dồn, giữ cái đầu, gom nhóm) là tùy bài toán, không tùy kiểu dữ liệu. *(draft)*
+    - **[flow/](notes/java/collections/flow/README.md)**
+      - [HashMap Put and Get](notes/java/collections/flow/hashmap-put-and-get.md) — Cả put lẫn get đi qua bốn bước: hashCode của key, trộn bit, lấy index theo độ dài mảng, rồi so equals trong ngăn. *(draft)*
+      - [Sort Calls Compare](notes/java/collections/flow/sort-calls-compare.md) — sort không tự biết sắp theo gì, nó gọi compare của Comparator được đưa vào, hoặc compareTo của chính phần tử, để quyết định ai đứng trước. *(draft)*
   - **core/**
-    - [Thuật ngữ](notes/java/core/glossary.md) — 2 mục, 0 đã chốt
+    - [Thuật ngữ](notes/java/core/glossary.md) — 6 mục, 0 đã chốt
     - **[concepts/](notes/java/core/concepts/README.md)**
+      - [Argument Order Set by Caller](notes/java/core/concepts/argument-order-set-by-caller.md) — Thứ tự đối số truyền vào hàm của ta do nơi gọi hàm đó quy định, còn tên tham số đặt gì cũng được. *(draft)*
+      - [Behavior as Argument](notes/java/core/concepts/behavior-as-argument.md) — Truyền hàm vào rồi xài trong lời gọi hàm. *(draft)*
       - [Polymorphism](notes/java/core/concepts/polymorphism.md) — Ta khai báo thứ cần dùng bằng [interface](../glossary.md#interface), nhưng lúc chạy thứ được đưa vào luôn là một [instance](../glossary.md#instance) thật của một class cụ thể. *(draft)*
+- **networking/**
+  - **tunnel/**
+    - **[concepts/](notes/networking/tunnel/concepts/README.md)**
+      - [Tunnel](notes/networking/tunnel/concepts/tunnel.md) — Tunnel là kết nối do máy bên trong chủ động tạo tới một server ở ngoài; người khác gửi cho server đó, server làm trung gian chuyển ngược lại cho máy bên trong qua chính kết nối ấy.

@@ -7,6 +7,3 @@ Một dòng dữ liệu trong bảng. *(draft)*
 
 ### Data
 Các row đổ vào khung của schema. *(draft)*
-
-### ddl-auto
-Cấu hình để Hibernate tự tạo hoặc đổi schema. *(draft)*

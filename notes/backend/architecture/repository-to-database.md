@@ -4,7 +4,7 @@ tags: [spring-data, jpa, architecture]
 status: draft
 verified: no
 ---
-**Một câu:** Lúc chạy chỉ [proxy](../spring/data/jpa/glossary.md#proxy) là [bean](../spring/data/jpa/glossary.md#bean), còn SimpleJpaRepository cùng query executor nằm bên trong nó làm [target](../spring/data/jpa/glossary.md#target).
+**Một câu:** Lúc chạy chỉ [proxy](../../computer-science/software-design/glossary.md#proxy) là [bean](../spring/glossary.md#bean), còn SimpleJpaRepository cùng query executor nằm bên trong nó làm [target](../../computer-science/software-design/glossary.md#target).
 
 ## Bản vẽ tay (từ Application.Run tới Database)
 Sơ đồ mới nhất, gồm ba hình: cấu trúc trong/ngoài container, flow khởi động, kiến trúc tổng:

@@ -5,9 +5,11 @@ _Sơ đồ tự sinh từ link trong các note, đừng sửa tay: `node tools/n
 
 ```mermaid
 flowchart TD
-    n0["Polymorphism"]:::draft
-    n1["Repository Proxy<br/>(jpa/concepts)"]:::ext
-    n0 -.- n1
+    n0["Argument Order Set by Caller"]:::draft
+    n1["Behavior as Argument"]:::draft
+    n2["Polymorphism"]:::draft
+    n3["Repository Proxy<br/>(jpa/concepts)"]:::ext
+    n2 -.- n3
     classDef stub fill:#eeeeee,stroke:#999999,stroke-dasharray:4 3,color:#555555
     classDef draft fill:#fff4cc,stroke:#c9a227,color:#333333
     classDef ok fill:#d8f0dc,stroke:#3a9d5d,color:#222222
@@ -20,3 +22,5 @@ _Chú thích: nét đứt: liên quan ngang cấp, không có thứ tự · ô v
 Kiến thức nền của Java, chưa dính framework.
 
 1. [Polymorphism](polymorphism.md)
+2. [Behavior as Argument](behavior-as-argument.md)
+3. [Argument Order Set by Caller](argument-order-set-by-caller.md)

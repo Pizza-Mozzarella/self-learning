@@ -38,12 +38,36 @@ flowchart TD
     d12 --> d15
     d16["flow/<br/>1 note"]
     d10 --> d16
-    d17["java/"]
+    d17["computer-science/"]
     d0 --> d17
-    d18["core/"]
+    d18["concurrency/"]
     d17 --> d18
-    d19["concepts/<br/>1 note"]
+    d19["concepts/<br/>2 note"]
     d18 --> d19
+    d20["software-design/"]
+    d17 --> d20
+    d21["concepts/<br/>1 note"]
+    d20 --> d21
+    d22["java/"]
+    d0 --> d22
+    d23["collections/"]
+    d22 --> d23
+    d24["architecture/<br/>3 note"]
+    d23 --> d24
+    d25["concepts/<br/>11 note"]
+    d23 --> d25
+    d26["flow/<br/>2 note"]
+    d23 --> d26
+    d27["core/"]
+    d22 --> d27
+    d28["concepts/<br/>3 note"]
+    d27 --> d28
+    d29["networking/"]
+    d0 --> d29
+    d30["tunnel/"]
+    d29 --> d30
+    d31["concepts/<br/>1 note"]
+    d30 --> d31
 ```
 
 _Chú thích: mỗi ô là một thư mục; số note là số note nằm trực tiếp trong thư mục đó._

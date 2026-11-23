@@ -55,3 +55,6 @@ Callback (`@PrePersist`) chạy ở tầng Hibernate, sau persist và trước I
 
 ### IDENTITY
 Kiểu sinh id do DB tự tăng; INSERT chạy ngay lúc persist để lấy id, không đợi flush hay commit. *(draft)*
+
+### ddl-auto
+Cấu hình để Hibernate tự tạo hoặc đổi schema. *(draft)*
